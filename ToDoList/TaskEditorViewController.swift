@@ -81,7 +81,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     private func updateImportanceLabel()
     {
         updateImportanceTextColor()
-        let importance = Int(importanceSlider.value)
+        let importance = round(importanceSlider.value)
         importanceLabel.text = "\(importance)"
         importanceSlider.value = Float(importance)
     }
