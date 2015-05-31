@@ -22,6 +22,7 @@
 		FEE365611B1A49CB0081361C /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655E1B1A49CB0081361C /* StoryboardConstants.swift */; };
 		FEE365621B1A49CB0081361C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655F1B1A49CB0081361C /* UIConstants.swift */; };
 		FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */; };
+		FEE693521B1AAD0A0040A1DA /* OptionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		FEE3655F1B1A49CB0081361C /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		FEE6934D1B1A70F20040A1DA /* ToDoList 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 2.xcdatamodel"; sourceTree = "<group>"; };
 		FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		FEE3655A1B1A49A50081361C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FEE693501B1AAC6D0040A1DA /* Protocols */,
 				FEE365541B1A49A10081361C /* ToDoListTableViewController.swift */,
 				FEE365551B1A49A10081361C /* TaskEditorViewController.swift */,
 				FEE365561B1A49A10081361C /* TaskDetailsViewController.swift */,
@@ -170,6 +173,14 @@
 				FEE3655F1B1A49CB0081361C /* UIConstants.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		FEE693501B1AAC6D0040A1DA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE693521B1AAD0A0040A1DA /* OptionsDelegate.swift in Sources */,
 				FEE3652A1B1A48160081361C /* AppDelegate.swift in Sources */,
 				FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */,
 				FEE3655C1B1A49C20081361C /* TaskManaged.swift in Sources */,

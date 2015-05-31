@@ -11,7 +11,8 @@ import UIKit
 class OptionsViewController: UIViewController {
     
     // MARK: - Properties
-    var parentVC: UIViewController?
+    var delegate: OptionsDelegate?
+    
     var initialSegmentedControlIndex = 0
     override var preferredContentSize: CGSize {
         get {
@@ -39,19 +40,13 @@ class OptionsViewController: UIViewController {
     @IBAction func valueChanged(sender: UISegmentedControl) {
         switch sortBySegmentedControl.selectedSegmentIndex {
         case 0:
-            registerSortDescriptor(CoreDataConstants.sortDescriptorKeyImportance)
+            delegate?.didSetSortOrder(self, sortOrder: CoreDataConstants.sortDescriptorKeyImportance)
         case 1:
-            registerSortDescriptor(CoreDataConstants.sortDescriptorKeyDueDate)
+            delegate?.didSetSortOrder(self, sortOrder: CoreDataConstants.sortDescriptorKeyDueDate)
         case 2:
-            registerSortDescriptor(CoreDataConstants.sortDescriptorKeyCreatedDate)
+            delegate?.didSetSortOrder(self, sortOrder: CoreDataConstants.sortDescriptorKeyCreatedDate)
         default:
             println("printing from the valueChanged method in the OptionsViewController class")
-        }
-    }
-    
-    private func registerSortDescriptor(sortDescriptorKey: String) {
-        if let pvc = parentVC as? ToDoListTableViewController {
-            pvc.sortDescriptorKey = sortDescriptorKey
         }
     }
     

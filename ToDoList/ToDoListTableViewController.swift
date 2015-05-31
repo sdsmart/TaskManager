@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate {
+class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
     
     // MARK: - Properties
     var taskNeedingToBeDeleted: TaskManaged?
@@ -167,6 +167,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!, traitCollection: UITraitCollection!) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
     }
+    
+    // MARK: - OptionsDelegate Methods
+    func didSetSortOrder(sender: OptionsViewController, sortOrder: String) {
+        sortDescriptorKey = sortOrder
+    }
 
     // MARK: - Navigation Methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -196,7 +201,8 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
                     if let popVC = destinationVC.popoverPresentationController {
                         popVC.delegate = self
                     }
-                    destinationVC.parentVC = self
+                    
+                    destinationVC.delegate = self
                     
                     switch sortDescriptorKey {
                     case CoreDataConstants.sortDescriptorKeyImportance:
