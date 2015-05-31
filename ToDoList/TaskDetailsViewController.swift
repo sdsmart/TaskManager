@@ -16,11 +16,19 @@ class TaskDetailsViewController: UIViewController {
     var taskManaged: TaskManaged? = nil
     var dateFormatter: NSDateFormatter?
     
+    @IBOutlet weak var nameHeaderLabel: UILabel!
+    @IBOutlet weak var importanceHeaderLabel: UILabel!
+    @IBOutlet weak var createdDateHeaderLabel: UILabel!
+    @IBOutlet weak var dueDateHeaderLabel: UILabel!
+    @IBOutlet weak var detailsHeaderLabel: UILabel!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     // MARK: - View Controller Lifecycle Methods
     override func viewWillAppear(animated: Bool) {
@@ -31,9 +39,8 @@ class TaskDetailsViewController: UIViewController {
     }
     
     private func initialViewSetup() {
-        self.view.backgroundColor = UIConstants.Colors.mainBackgroundColor
+        implementColorCheme()
         
-        detailsTextView.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
         detailsTextView.layer.borderWidth = CGFloat(0.5)
         detailsTextView.layer.borderColor = UIColor.blackColor().CGColor
         detailsTextView.layer.cornerRadius = UIConstants.Appearance.textViewBorderRadius
@@ -42,6 +49,20 @@ class TaskDetailsViewController: UIViewController {
         dateFormatter = NSDateFormatter()
         dateFormatter!.dateStyle = NSDateFormatterStyle.LongStyle
         dateFormatter!.timeStyle = NSDateFormatterStyle.ShortStyle
+    }
+    
+    private func implementColorCheme() {
+        self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+        detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+        
+        nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
+        importanceHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.importanceLabelColor
+        createdDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.createdDateLabelColor
+        dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
+        dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateTextColor
+        detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
+        
+        editButton.tintColor = UIConstants.Colors.DefaultColorScheme.editButtonColor
     }
     
     private func updateUI() {

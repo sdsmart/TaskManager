@@ -27,13 +27,21 @@ class OptionsViewController: UIViewController {
     }
     
     @IBOutlet weak var sortBySegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sortByLabel: UILabel!
+    @IBOutlet weak var dismissButton: UIButton!
     
     // MARK: - View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        implementColorScheme()
         sortBySegmentedControl.selectedSegmentIndex = initialSegmentedControlIndex
-        self.view.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
+    }
+    
+    private func implementColorScheme() {
+        self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+        sortByLabel.textColor = UIConstants.Colors.DefaultColorScheme.sortByLabelColor
+        dismissButton.tintColor = UIConstants.Colors.DefaultColorScheme.dismissButtonColor
     }
     
     // MARK: - Action Methods

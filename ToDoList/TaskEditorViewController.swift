@@ -16,6 +16,15 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     var taskManaged: TaskManaged? = nil
     var viewNeedsToAnimate: Bool = false
     
+    @IBOutlet weak var nameHeaderLabel: UILabel!
+    @IBOutlet weak var importanceHeaderLabel: UILabel!
+    @IBOutlet weak var lowImportanceLabel: UILabel!
+    @IBOutlet weak var highImportanceLabel: UILabel!
+    @IBOutlet weak var detailsHeaderLabel: UILabel!
+    @IBOutlet weak var dueDateHeaderLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var importanceSlider: UISlider!
     @IBOutlet weak var importanceLabel: UILabel!
@@ -34,10 +43,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     }
     
     private func initialViewSetup() {
-        self.view.backgroundColor = UIConstants.Colors.mainBackgroundColor
-        nameTextField.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
-        detailsTextView.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
-        importanceSlider.tintColor = UIColor.blackColor()
+        implementColorScheme()
         
         swipeGestureRecognizer.addTarget(self, action: "swipeGestureReceived")
         tapGestureRecognizer.addTarget(self, action: "tapGestureReceived")
@@ -47,6 +53,22 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
         detailsTextView.layer.cornerRadius = 4
         detailsTextView.clipsToBounds = true
         detailsTextView.delegate = self
+    }
+    
+    private func implementColorScheme() {
+        nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
+        importanceHeaderLabel.textColor = UIConstants.Colors.highImportanceColor
+        lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
+        highImportanceLabel.textColor = UIConstants.Colors.highImportanceColor
+        detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
+        dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
+        cancelButton.tintColor = UIConstants.Colors.DefaultColorScheme.cancelButtonColor
+        saveButton.tintColor = UIConstants.Colors.DefaultColorScheme.saveButtonColor
+            
+        self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+        nameTextField.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+        detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+        importanceSlider.tintColor = UIColor.blackColor()
     }
     
     override func viewWillAppear(animated: Bool) {

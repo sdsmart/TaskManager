@@ -12,6 +12,7 @@ import CoreData
 class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
     
     // MARK: - Properties
+    var colorScheme = UIConstants.Colors.ColorScheme.Default
     var taskNeedingToBeDeleted: TaskManaged?
     var managedObjectContext: NSManagedObjectContext!
     var sortDescriptorKey = CoreDataConstants.sortDescriptorKeyImportance {
@@ -39,6 +40,9 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         return frc
     }()
     
+    @IBOutlet weak var optionsButton: UIBarButtonItem!
+    @IBOutlet weak var newButton: UIBarButtonItem!
+    
     // MARK: - View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +52,16 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             sortDescriptorKey = sortMethod
         }
         
-        self.tableView.backgroundColor = UIConstants.Colors.mainBackgroundColor
-        self.tableView.separatorColor = UIColor.blackColor()
+        implementColorScheme()
         loadData()
+    }
+    
+    private func implementColorScheme() {
+        self.navigationController?.navigationBar.tintColor = UIConstants.Colors.DefaultColorScheme.backButtonColor
+        self.tableView.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+        self.tableView.separatorColor = UIColor.blackColor()
+        optionsButton.tintColor = UIConstants.Colors.DefaultColorScheme.optionsButtonColor
+        newButton.tintColor = UIConstants.Colors.DefaultColorScheme.newButtonColor
     }
     
     private func loadData() {
@@ -86,8 +97,6 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         let cell = tableView.dequeueReusableCellWithIdentifier(StoryboardConstants.CellIdentifiers.prototypeCellID, forIndexPath: indexPath) as! TaskTableViewCell
         let task = fetchedResultsController.objectAtIndexPath(indexPath) as? TaskManaged
         
-        cell.backgroundColor = UIConstants.Colors.mainBackgroundColor
-        cell.contentView.backgroundColor = UIConstants.Colors.cellBackgroundColor
         cell.taskManaged = task
 
         return cell
