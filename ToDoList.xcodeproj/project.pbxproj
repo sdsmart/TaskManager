@@ -23,6 +23,7 @@
 		FEE365621B1A49CB0081361C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655F1B1A49CB0081361C /* UIConstants.swift */; };
 		FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */; };
 		FEE693521B1AAD0A0040A1DA /* OptionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */; };
+		FEE693541B1AB4260040A1DA /* NSUserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE693531B1AB4260040A1DA /* NSUserDefaultsConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FEE6934D1B1A70F20040A1DA /* ToDoList 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 2.xcdatamodel"; sourceTree = "<group>"; };
 		FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsDelegate.swift; sourceTree = "<group>"; };
+		FEE693531B1AB4260040A1DA /* NSUserDefaultsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				FEE3655D1B1A49CB0081361C /* CoreDataConstants.swift */,
 				FEE3655E1B1A49CB0081361C /* StoryboardConstants.swift */,
 				FEE3655F1B1A49CB0081361C /* UIConstants.swift */,
+				FEE693531B1AB4260040A1DA /* NSUserDefaultsConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				FEE693521B1AAD0A0040A1DA /* OptionsDelegate.swift in Sources */,
 				FEE3652A1B1A48160081361C /* AppDelegate.swift in Sources */,
+				FEE693541B1AB4260040A1DA /* NSUserDefaultsConstants.swift in Sources */,
 				FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */,
 				FEE3655C1B1A49C20081361C /* TaskManaged.swift in Sources */,
 				FEE365601B1A49CB0081361C /* CoreDataConstants.swift in Sources */,

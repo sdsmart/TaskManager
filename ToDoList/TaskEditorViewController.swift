@@ -128,7 +128,6 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
         if !nameTextField.text.isEmpty {
             if taskManaged != nil {
                 taskManaged!.dueDate = dueDatePicker.date
-                taskManaged!.createdDate = NSDate()
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
                 taskManaged!.importance = importanceLabel.text!.toInt()!

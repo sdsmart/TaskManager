@@ -16,6 +16,9 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     var managedObjectContext: NSManagedObjectContext!
     var sortDescriptorKey = CoreDataConstants.sortDescriptorKeyImportance {
         didSet {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(sortDescriptorKey, forKey: NSUserDefaultsConstants.sortDescriptorKey)
+            
             let sortDescriptor = NSSortDescriptor(key: sortDescriptorKey, ascending: false)
             fetchedResultsController.fetchRequest.sortDescriptors = [sortDescriptor]
             loadData()
@@ -39,6 +42,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     // MARK: - View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let sortMethod = defaults.stringForKey(NSUserDefaultsConstants.sortDescriptorKey) {
+            sortDescriptorKey = sortMethod
+        }
         
         self.tableView.backgroundColor = UIConstants.Colors.mainBackgroundColor
         self.tableView.separatorColor = UIColor.blackColor()
@@ -178,45 +186,57 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         if let identifier = segue.identifier {
             switch identifier {
             case StoryboardConstants.SegueIdentifiers.addTaskSegue:
-                if let destinationVC = segue.destinationViewController as? UINavigationController {
-                    if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorViewController {
-                        taskEditorController.managedObjectContext = self.managedObjectContext
-                        taskEditorController.taskManaged = nil
-                        taskEditorController.title = UIConstants.Appearance.taskEditorTitleForAdd
-                    }
-                }
+                prepareForAddTaskSegue(sender, addSegue: segue)
             case StoryboardConstants.SegueIdentifiers.taskDetailsSegue:
-                if let destinationVC = segue.destinationViewController as? TaskDetailsViewController {
-                    if let selectedIndex = self.tableView.indexPathForSelectedRow() {
-                        if let task = self.fetchedResultsController.objectAtIndexPath(selectedIndex) as? TaskManaged {
-                            destinationVC.managedObjectContext = self.managedObjectContext
-                            destinationVC.taskManaged = task
-                            
-                            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
-                        }
-                    }
-                }
+                prepareForDetailsSegue(sender, detailsSegue: segue)
             case StoryboardConstants.SegueIdentifiers.optionsSegue:
-                if let destinationVC = segue.destinationViewController as? OptionsViewController {
-                    if let popVC = destinationVC.popoverPresentationController {
-                        popVC.delegate = self
-                    }
-                    
-                    destinationVC.delegate = self
-                    
-                    switch sortDescriptorKey {
-                    case CoreDataConstants.sortDescriptorKeyImportance:
-                        destinationVC.initialSegmentedControlIndex = 0
-                    case CoreDataConstants.sortDescriptorKeyDueDate:
-                        destinationVC.initialSegmentedControlIndex = 1
-                    case CoreDataConstants.sortDescriptorKeyCreatedDate:
-                        destinationVC.initialSegmentedControlIndex = 2
-                    default:
-                        println("printing from default case of optionsSegue switch statement in prepareForSegue method in the ToDoListTableViewController class")
-                    }
-                }
+                prepareForOptionsSegue(sender, optionsSegue: segue)
             default:
-                println("printing from default case of main switch statement of the prepareForSegue method in the ToDoListTableViewController class")
+                println("printing from the prepareForSegue method in the ToDoListTableViewController class")
+            }
+        }
+    }
+    
+    private func prepareForAddTaskSegue(sender: AnyObject?, addSegue: UIStoryboardSegue) {
+        if let destinationVC = addSegue.destinationViewController as? UINavigationController {
+            if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorViewController {
+                taskEditorController.managedObjectContext = self.managedObjectContext
+                taskEditorController.taskManaged = nil
+                taskEditorController.title = UIConstants.Appearance.taskEditorTitleForAdd
+            }
+        }
+    }
+    
+    private func prepareForDetailsSegue(sender: AnyObject?, detailsSegue: UIStoryboardSegue) {
+        if let destinationVC = detailsSegue.destinationViewController as? TaskDetailsViewController {
+            if let selectedIndex = self.tableView.indexPathForSelectedRow() {
+                if let task = self.fetchedResultsController.objectAtIndexPath(selectedIndex) as? TaskManaged {
+                    destinationVC.managedObjectContext = self.managedObjectContext
+                    destinationVC.taskManaged = task
+                    
+                    self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
+                }
+            }
+        }
+    }
+    
+    private func prepareForOptionsSegue(sender: AnyObject?, optionsSegue: UIStoryboardSegue) {
+        if let destinationVC = optionsSegue.destinationViewController as? OptionsViewController {
+            if let popVC = destinationVC.popoverPresentationController {
+                popVC.delegate = self
+            }
+            
+            destinationVC.delegate = self
+            
+            switch sortDescriptorKey {
+            case CoreDataConstants.sortDescriptorKeyImportance:
+                destinationVC.initialSegmentedControlIndex = 0
+            case CoreDataConstants.sortDescriptorKeyDueDate:
+                destinationVC.initialSegmentedControlIndex = 1
+            case CoreDataConstants.sortDescriptorKeyCreatedDate:
+                destinationVC.initialSegmentedControlIndex = 2
+            default:
+                println("printing from default case of the prepareForOptionsSegue method in the ToDoListTableViewController class")
             }
         }
     }
