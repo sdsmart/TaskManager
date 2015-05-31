@@ -9,17 +9,24 @@
 import UIKit
 import CoreData
 
-class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate {
+class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate {
     
     // MARK: - Properties
     var taskNeedingToBeDeleted: TaskManaged?
     var managedObjectContext: NSManagedObjectContext!
+    var sortDescriptorKey = CoreDataConstants.sortDescriptorKeyImportance {
+        didSet {
+            let sortDescriptor = NSSortDescriptor(key: sortDescriptorKey, ascending: false)
+            fetchedResultsController.fetchRequest.sortDescriptors = [sortDescriptor]
+            loadData()
+        }
+    }
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         [unowned self] in
         
         let taskFetchRequest = NSFetchRequest(entityName: CoreDataConstants.taskEntityName)
-        let sortDescriptor = NSSortDescriptor(key: CoreDataConstants.sortDescriptorKey, ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: self.sortDescriptorKey, ascending: false)
         taskFetchRequest.sortDescriptors = [sortDescriptor]
         
         let frc = NSFetchedResultsController(fetchRequest: taskFetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -43,6 +50,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         if fetchedResultsController.performFetch(&error) == false {
             println("An error occurred: \(error?.localizedDescription)")
         }
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -154,6 +162,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
+    
+    // MARK: - UIPopoverPresentationControllerDelegate Methods
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!, traitCollection: UITraitCollection!) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
 
     // MARK: - Navigation Methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -178,8 +191,26 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
                         }
                     }
                 }
+            case StoryboardConstants.SegueIdentifiers.optionsSegue:
+                if let destinationVC = segue.destinationViewController as? OptionsViewController {
+                    if let popVC = destinationVC.popoverPresentationController {
+                        popVC.delegate = self
+                    }
+                    destinationVC.parentVC = self
+                    
+                    switch sortDescriptorKey {
+                    case CoreDataConstants.sortDescriptorKeyImportance:
+                        destinationVC.initialSegmentedControlIndex = 0
+                    case CoreDataConstants.sortDescriptorKeyDueDate:
+                        destinationVC.initialSegmentedControlIndex = 1
+                    case CoreDataConstants.sortDescriptorKeyCreatedDate:
+                        destinationVC.initialSegmentedControlIndex = 2
+                    default:
+                        println("printing from default case of optionsSegue switch statement in prepareForSegue method in the ToDoListTableViewController class")
+                    }
+                }
             default:
-                println("printing from default case of the prepareForSegue method in the ToDoListTableViewController class")
+                println("printing from default case of main switch statement of the prepareForSegue method in the ToDoListTableViewController class")
             }
         }
     }

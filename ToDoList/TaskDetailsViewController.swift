@@ -14,10 +14,13 @@ class TaskDetailsViewController: UIViewController {
     // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
+    var dateFormatter: NSDateFormatter?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
+    @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
     
     // MARK: - View Controller Lifecycle Methods
     override func viewWillAppear(animated: Bool) {
@@ -30,21 +33,29 @@ class TaskDetailsViewController: UIViewController {
     private func initialViewSetup() {
         self.view.backgroundColor = UIConstants.Colors.mainBackgroundColor
         
-        detailsTextView.backgroundColor = UIConstants.Colors.textFieldBackgroundColor
+        detailsTextView.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
         detailsTextView.layer.borderWidth = CGFloat(0.5)
         detailsTextView.layer.borderColor = UIColor.blackColor().CGColor
         detailsTextView.layer.cornerRadius = UIConstants.Appearance.textViewBorderRadius
         detailsTextView.clipsToBounds = true
+        
+        dateFormatter = NSDateFormatter()
+        dateFormatter!.dateStyle = NSDateFormatterStyle.LongStyle
+        dateFormatter!.timeStyle = NSDateFormatterStyle.ShortStyle
     }
     
     private func updateUI() {
         if taskManaged != nil {
             updateImportanceTextColor()
             
+            let createdDate = dateFormatter?.stringFromDate(taskManaged!.createdDate)
+            let dueDate = dateFormatter?.stringFromDate(taskManaged!.dueDate)
+            
+            createdDateLabel.text = createdDate
+            dueDateLabel.text = dueDate
             nameLabel.text = taskManaged!.name
             importanceLabel.text = "\(taskManaged!.importance)"
             detailsTextView.text = taskManaged!.details
-            
         }
     }
     

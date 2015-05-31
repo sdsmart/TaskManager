@@ -21,6 +21,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
@@ -34,8 +35,8 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     
     private func initialViewSetup() {
         self.view.backgroundColor = UIConstants.Colors.mainBackgroundColor
-        nameTextField.backgroundColor = UIConstants.Colors.textFieldBackgroundColor
-        detailsTextView.backgroundColor = UIConstants.Colors.textFieldBackgroundColor
+        nameTextField.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
+        detailsTextView.backgroundColor = UIConstants.Colors.secondaryBackgroundColor
         importanceSlider.tintColor = UIColor.blackColor()
         
         swipeGestureRecognizer.addTarget(self, action: "swipeGestureReceived")
@@ -126,12 +127,16 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         if !nameTextField.text.isEmpty {
             if taskManaged != nil {
+                taskManaged!.dueDate = dueDatePicker.date
+                taskManaged!.createdDate = NSDate()
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
                 taskManaged!.importance = importanceLabel.text!.toInt()!
             } else {
                 let task = NSEntityDescription.insertNewObjectForEntityForName(CoreDataConstants.taskEntityName, inManagedObjectContext: managedObjectContext) as! TaskManaged
                 
+                task.dueDate = dueDatePicker.date
+                task.createdDate = NSDate()
                 task.name = nameTextField.text
                 task.details = detailsTextView.text
                 task.importance = importanceLabel.text!.toInt()!

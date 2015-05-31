@@ -10,5 +10,7 @@ import Foundation
 
 public struct CoreDataConstants {
     static let taskEntityName = "Task"
-    static let sortDescriptorKey = "importance"
+    static let sortDescriptorKeyImportance = "importance"
+    static let sortDescriptorKeyDueDate = "dueDate"
+    static let sortDescriptorKeyCreatedDate = "createdDate"
 }
