@@ -11,7 +11,7 @@ import CoreData
 
 class TaskEditorViewController: UIViewController, UITextViewDelegate {
 
-    // MARK: - Properties
+    // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
     var viewNeedsToAnimate: Bool = false
@@ -35,7 +35,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
-    // MARK: - View Controller Lifecycle Methods
+    // MARK: View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,7 +124,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
         importanceSlider.value = Float(importance)
     }
     
-    // MARK: - Gesture Recognizer Actions
+    // MARK: Gesture Recognizer Methods
     func swipeGestureReceived() {
         detailsTextView.resignFirstResponder()
         nameTextField.resignFirstResponder()
@@ -135,7 +135,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
         nameTextField.resignFirstResponder()
     }
     
-    // MARK: - UITextViewDelegate Methods
+    // MARK: UITextViewDelegate Methods
     func textViewDidBeginEditing(textView: UITextView) {
         animateViewWithKeyboard(up: true)
     }

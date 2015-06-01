@@ -10,7 +10,7 @@ import UIKit
 
 class OptionsViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: Properties
     var delegate: OptionsDelegate?
     var initialSortBySegmentedControlIndex = 0
     var initialColorSchemeSegmentedControlIndex = 0
@@ -33,7 +33,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var colorSchemeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var dismissButton: UIButton!
     
-    // MARK: - View Controller Lifecycle Methods
+    // MARK: View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,7 +62,7 @@ class OptionsViewController: UIViewController {
         }
     }
     
-    // MARK: - Action Methods
+    // MARK: Action Methods
     @IBAction func sortOrderChanged(sender: UISegmentedControl) {
         switch sortBySegmentedControl.selectedSegmentIndex {
         case 0:

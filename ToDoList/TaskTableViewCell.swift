@@ -10,7 +10,7 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
-    // MARK: - Properties
+    // MARK: Properties
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme {
         didSet {
             implementColorScheme()
@@ -29,7 +29,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     
-    // MARK: - UpdateUI Methods
+    // MARK: UpdateUI Methods
     override func awakeFromNib() {
         implementColorScheme()
     }

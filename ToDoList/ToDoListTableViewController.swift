@@ -11,7 +11,7 @@ import CoreData
 
 class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
     
-    // MARK: - Properties
+    // MARK: Properties
     var taskNeedingToBeDeleted: TaskManaged?
     var managedObjectContext: NSManagedObjectContext!
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme {
@@ -62,7 +62,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var newButton: UIBarButtonItem!
     
-    // MARK: - View Controller Lifecycle Methods
+    // MARK: View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,7 +115,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         self.tableView.reloadData()
     }
 
-    // MARK: - UITableViewDataSource Methods
+    // MARK: UITableViewDataSource Methods
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         let sections = fetchedResultsController.sections!
         
@@ -160,7 +160,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         confirmDeleteActionSheet.showInView(self.view)
     }
     
-    // MARK - UIActionSheetDelegate methods
+    // MARK: UIActionSheetDelegate methods
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex == 0 {
             deleteTask()
@@ -178,7 +178,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
-    // MARK: - NSFetchedResultsControllerDelegate Methods
+    // MARK: NSFetchedResultsControllerDelegate Methods
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
     }
@@ -218,12 +218,12 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         tableView.endUpdates()
     }
     
-    // MARK: - UIPopoverPresentationControllerDelegate Methods
+    // MARK: UIPopoverPresentationControllerDelegate Methods
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!, traitCollection: UITraitCollection!) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
     }
     
-    // MARK: - OptionsDelegate Methods
+    // MARK: OptionsDelegate Methods
     func didSetSortOrder(sender: OptionsViewController, selectedSortOrder: String) {
         sortDescriptorKey = selectedSortOrder
     }
@@ -232,7 +232,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         colorScheme = selectedColorScheme
     }
 
-    // MARK: - Navigation Methods
+    // MARK: Navigation Methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {

@@ -11,7 +11,7 @@ import CoreData
 
 public class TaskManaged: NSManagedObject {
     
-    // MARK: - Properties
+    // MARK: Properties
     @NSManaged public var name: String
     @NSManaged public var details: String
     @NSManaged public var importance: Int

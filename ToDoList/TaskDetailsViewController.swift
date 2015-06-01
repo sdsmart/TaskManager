@@ -11,7 +11,7 @@ import CoreData
 
 class TaskDetailsViewController: UIViewController {
 
-    // MARK: - Properties
+    // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
     var dateFormatter: NSDateFormatter?
@@ -31,7 +31,7 @@ class TaskDetailsViewController: UIViewController {
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
-    // MARK: - View Controller Lifecycle Methods
+    // MARK: View Controller Lifecycle Methods
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -108,7 +108,7 @@ class TaskDetailsViewController: UIViewController {
         }
     }
     
-    // MARK: - Navigation Methods
+    // MARK: Navigation Methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
