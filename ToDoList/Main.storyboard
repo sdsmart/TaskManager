@@ -45,7 +45,7 @@
                                 <segments>
                                     <segment title="Default"/>
                                     <segment title="Blue"/>
-                                    <segment title="?"/>
+                                    <segment title="Red"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>

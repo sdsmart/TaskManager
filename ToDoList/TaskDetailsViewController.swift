@@ -15,7 +15,7 @@ class TaskDetailsViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
     var dateFormatter: NSDateFormatter?
-    var colorScheme = UIConstants.Colors.ColorScheme.Default.rawValue
+    var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
     
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var importanceHeaderLabel: UILabel!
@@ -53,31 +53,26 @@ class TaskDetailsViewController: UIViewController {
     }
     
     private func implementColorCheme() {
+        func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
+            self.view.backgroundColor = scheme.mainBackgroundColor
+            detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
+            
+            nameHeaderLabel.textColor = scheme.nameLabelColor
+            importanceHeaderLabel.textColor = scheme.importanceLabelColor
+            createdDateHeaderLabel.textColor = scheme.createdDateLabelColor
+            dueDateHeaderLabel.textColor = scheme.dueDateLabelColor
+            dueDateLabel.textColor = scheme.dueDateTextColor
+            detailsHeaderLabel.textColor = scheme.detailsLabelColor
+            editButton.tintColor = scheme.editButtonColor
+        }
+        
         switch colorScheme {
-        case UIConstants.Colors.ColorScheme.Default.rawValue:
-            self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
-            detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
-            
-            nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
-            importanceHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.importanceLabelColor
-            createdDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.createdDateLabelColor
-            dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
-            dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateTextColor
-            detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
-            
-            editButton.tintColor = UIConstants.Colors.DefaultColorScheme.editButtonColor
-        case UIConstants.Colors.ColorScheme.Blue.rawValue:
-            self.view.backgroundColor = UIConstants.Colors.BlueColorScheme.mainBackgroundColor
-            detailsTextView.backgroundColor = UIConstants.Colors.BlueColorScheme.secondaryBackgroundColor
-            
-            nameHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.nameLabelColor
-            importanceHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.importanceLabelColor
-            createdDateHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.createdDateLabelColor
-            dueDateHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.dueDateLabelColor
-            dueDateLabel.textColor = UIConstants.Colors.BlueColorScheme.dueDateTextColor
-            detailsHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.detailsLabelColor
-            
-            editButton.tintColor = UIConstants.Colors.BlueColorScheme.editButtonColor
+        case UIConstants.Colors.ColorScheme.defaultScheme:
+            implementColorSchemeHelper(UIConstants.Colors.DefaultColorScheme())
+        case UIConstants.Colors.ColorScheme.blueScheme:
+            implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
+        case UIConstants.Colors.ColorScheme.redScheme:
+            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
             println("printing from the default case of the implementColorScheme method in the TaskDetailsViewController class")
         }

@@ -11,7 +11,7 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
 
     // MARK: - Properties
-    var colorScheme = UIConstants.Colors.ColorScheme.Default.rawValue {
+    var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme {
         didSet {
             implementColorScheme()
         }
@@ -22,6 +22,7 @@ class TaskTableViewCell: UITableViewCell {
             updateUI()
         }
     }
+    
     var isDeleted: Bool = false
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -34,15 +35,19 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     private func implementColorScheme() {
+        func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
+            self.backgroundColor = scheme.mainBackgroundColor
+            self.contentView.backgroundColor = scheme.cellBackgroundColor
+            dueDateLabel.textColor = scheme.subtitleDueDateOnCellColor
+        }
+        
         switch colorScheme {
-        case UIConstants.Colors.ColorScheme.Default.rawValue:
-            self.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
-            self.contentView.backgroundColor = UIConstants.Colors.DefaultColorScheme.cellBackgroundColor
-            dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.subtitleDueDateOnCellColor
-        case UIConstants.Colors.ColorScheme.Blue.rawValue:
-            self.backgroundColor = UIConstants.Colors.BlueColorScheme.mainBackgroundColor
-            self.contentView.backgroundColor = UIConstants.Colors.BlueColorScheme.cellBackgroundColor
-            dueDateLabel.textColor = UIConstants.Colors.BlueColorScheme.subtitleDueDateOnCellColor
+        case UIConstants.Colors.ColorScheme.defaultScheme:
+            implementColorSchemeHelper(UIConstants.Colors.DefaultColorScheme())
+        case UIConstants.Colors.ColorScheme.blueScheme:
+            implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
+        case UIConstants.Colors.ColorScheme.redScheme:
+            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
             println("printing from the implementColorScheme method in the TaskTableViewCell class")
         }
