@@ -11,6 +11,12 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
 
     // MARK: - Properties
+    var colorScheme = UIConstants.Colors.ColorScheme.Default.rawValue {
+        didSet {
+            implementColorScheme()
+        }
+    }
+    
     var taskManaged: TaskManaged? {
         didSet {
             updateUI()
@@ -28,9 +34,18 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     private func implementColorScheme() {
-        self.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
-        self.contentView.backgroundColor = UIConstants.Colors.DefaultColorScheme.cellBackgroundColor
-        dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.subtitleDueDateOnCellColor
+        switch colorScheme {
+        case UIConstants.Colors.ColorScheme.Default.rawValue:
+            self.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+            self.contentView.backgroundColor = UIConstants.Colors.DefaultColorScheme.cellBackgroundColor
+            dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.subtitleDueDateOnCellColor
+        case UIConstants.Colors.ColorScheme.Blue.rawValue:
+            self.backgroundColor = UIConstants.Colors.BlueColorScheme.mainBackgroundColor
+            self.contentView.backgroundColor = UIConstants.Colors.BlueColorScheme.cellBackgroundColor
+            dueDateLabel.textColor = UIConstants.Colors.BlueColorScheme.subtitleDueDateOnCellColor
+        default:
+            println("printing from the implementColorScheme method in the TaskTableViewCell class")
+        }
     }
     
     override func layoutSubviews() {

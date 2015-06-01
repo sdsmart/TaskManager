@@ -12,9 +12,27 @@ import CoreData
 class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
     
     // MARK: - Properties
-    var colorScheme = UIConstants.Colors.ColorScheme.Default
     var taskNeedingToBeDeleted: TaskManaged?
     var managedObjectContext: NSManagedObjectContext!
+    var colorScheme = UIConstants.Colors.ColorScheme.Default.rawValue {
+        didSet {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(colorScheme, forKey: NSUserDefaultsConstants.colorSchemeKey)
+            
+            implementColorScheme()
+            
+            let numberOfSections = self.tableView.numberOfSections()
+            for i in 0..<numberOfSections {
+                let numberOfRows = self.tableView.numberOfRowsInSection(i)
+                for j in 0..<numberOfRows {
+                    let indexPath = NSIndexPath(forRow: j, inSection: i)
+                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TaskTableViewCell {
+                        cell.colorScheme = colorScheme
+                    }
+                }
+            }
+        }
+    }
     var sortDescriptorKey = CoreDataConstants.sortDescriptorKeyImportance {
         didSet {
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -51,17 +69,31 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         if let sortMethod = defaults.stringForKey(NSUserDefaultsConstants.sortDescriptorKey) {
             sortDescriptorKey = sortMethod
         }
+        if let cs = defaults.stringForKey(NSUserDefaultsConstants.colorSchemeKey) {
+            colorScheme = cs
+        }
         
         implementColorScheme()
         loadData()
     }
     
     private func implementColorScheme() {
-        self.navigationController?.navigationBar.tintColor = UIConstants.Colors.DefaultColorScheme.backButtonColor
-        self.tableView.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
-        self.tableView.separatorColor = UIColor.blackColor()
-        optionsButton.tintColor = UIConstants.Colors.DefaultColorScheme.optionsButtonColor
-        newButton.tintColor = UIConstants.Colors.DefaultColorScheme.newButtonColor
+        switch colorScheme {
+        case UIConstants.Colors.ColorScheme.Default.rawValue:
+            self.tableView.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+            self.tableView.separatorColor = UIColor.blackColor()
+            optionsButton.tintColor = UIConstants.Colors.DefaultColorScheme.optionsButtonColor
+            newButton.tintColor = UIConstants.Colors.DefaultColorScheme.newButtonColor
+            self.navigationController?.navigationBar.tintColor = UIConstants.Colors.DefaultColorScheme.backButtonColor
+        case UIConstants.Colors.ColorScheme.Blue.rawValue:
+            self.tableView.backgroundColor = UIConstants.Colors.BlueColorScheme.mainBackgroundColor
+            self.tableView.separatorColor = UIColor.blackColor()
+            optionsButton.tintColor = UIConstants.Colors.BlueColorScheme.optionsButtonColor
+            newButton.tintColor = UIConstants.Colors.BlueColorScheme.newButtonColor
+            self.navigationController?.navigationBar.tintColor = UIConstants.Colors.BlueColorScheme.backButtonColor
+        default:
+            println("printing from the default case of implementColorScheme in the ToDoListTableViewController class")
+        }
     }
     
     private func loadData() {
@@ -98,6 +130,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         let task = fetchedResultsController.objectAtIndexPath(indexPath) as? TaskManaged
         
         cell.taskManaged = task
+        cell.colorScheme = self.colorScheme
 
         return cell
     }
@@ -187,7 +220,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     
     // MARK: - OptionsDelegate Methods
     func didSetSortOrder(sender: OptionsViewController, sortOrder: String) {
-        sortDescriptorKey = sortOrder
+        self.sortDescriptorKey = sortOrder
+    }
+    
+    func didSetColorScheme(sender: OptionsViewController, colorScheme: String) {
+        self.colorScheme = colorScheme
     }
 
     // MARK: - Navigation Methods
@@ -212,6 +249,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
                 taskEditorController.managedObjectContext = self.managedObjectContext
                 taskEditorController.taskManaged = nil
                 taskEditorController.title = UIConstants.Appearance.taskEditorTitleForAdd
+                taskEditorController.colorScheme = self.colorScheme
             }
         }
     }
@@ -222,6 +260,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
                 if let task = self.fetchedResultsController.objectAtIndexPath(selectedIndex) as? TaskManaged {
                     destinationVC.managedObjectContext = self.managedObjectContext
                     destinationVC.taskManaged = task
+                    destinationVC.colorScheme = self.colorScheme
                     
                     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
                 }
@@ -236,16 +275,27 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             }
             
             destinationVC.delegate = self
+            destinationVC.colorScheme = self.colorScheme
             
             switch sortDescriptorKey {
             case CoreDataConstants.sortDescriptorKeyImportance:
-                destinationVC.initialSegmentedControlIndex = 0
+                destinationVC.initialSortBySegmentedControlIndex = 0
             case CoreDataConstants.sortDescriptorKeyDueDate:
-                destinationVC.initialSegmentedControlIndex = 1
+                destinationVC.initialSortBySegmentedControlIndex = 1
             case CoreDataConstants.sortDescriptorKeyCreatedDate:
-                destinationVC.initialSegmentedControlIndex = 2
+                destinationVC.initialSortBySegmentedControlIndex = 2
             default:
-                println("printing from default case of the prepareForOptionsSegue method in the ToDoListTableViewController class")
+                println("printing from default case (sortDescriptoryKey) of the prepareForOptionsSegue method in the ToDoListTableViewController class")
+            }
+            
+            switch colorScheme {
+            case UIConstants.Colors.ColorScheme.Default.rawValue:
+                destinationVC.initialColorSchemeSegmentedControlIndex = 0
+            case UIConstants.Colors.ColorScheme.Blue.rawValue:
+                destinationVC.initialColorSchemeSegmentedControlIndex = 1
+            // 3rd case
+            default:
+                println("printing from the default case (colorScheme) of the prepareForOptionsSegue method in the ToDoListTableViewController class")
             }
         }
     }

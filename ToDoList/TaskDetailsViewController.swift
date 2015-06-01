@@ -15,6 +15,7 @@ class TaskDetailsViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
     var dateFormatter: NSDateFormatter?
+    var colorScheme = UIConstants.Colors.ColorScheme.Default.rawValue
     
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var importanceHeaderLabel: UILabel!
@@ -52,17 +53,34 @@ class TaskDetailsViewController: UIViewController {
     }
     
     private func implementColorCheme() {
-        self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
-        detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
-        
-        nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
-        importanceHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.importanceLabelColor
-        createdDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.createdDateLabelColor
-        dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
-        dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateTextColor
-        detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
-        
-        editButton.tintColor = UIConstants.Colors.DefaultColorScheme.editButtonColor
+        switch colorScheme {
+        case UIConstants.Colors.ColorScheme.Default.rawValue:
+            self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+            detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+            
+            nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
+            importanceHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.importanceLabelColor
+            createdDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.createdDateLabelColor
+            dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
+            dueDateLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateTextColor
+            detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
+            
+            editButton.tintColor = UIConstants.Colors.DefaultColorScheme.editButtonColor
+        case UIConstants.Colors.ColorScheme.Blue.rawValue:
+            self.view.backgroundColor = UIConstants.Colors.BlueColorScheme.mainBackgroundColor
+            detailsTextView.backgroundColor = UIConstants.Colors.BlueColorScheme.secondaryBackgroundColor
+            
+            nameHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.nameLabelColor
+            importanceHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.importanceLabelColor
+            createdDateHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.createdDateLabelColor
+            dueDateHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.dueDateLabelColor
+            dueDateLabel.textColor = UIConstants.Colors.BlueColorScheme.dueDateTextColor
+            detailsHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.detailsLabelColor
+            
+            editButton.tintColor = UIConstants.Colors.BlueColorScheme.editButtonColor
+        default:
+            println("printing from the default case of the implementColorScheme method in the TaskDetailsViewController class")
+        }
     }
     
     private func updateUI() {
@@ -106,6 +124,7 @@ class TaskDetailsViewController: UIViewController {
                         if taskManaged != nil {
                             taskEditorController.taskManaged = taskManaged
                             taskEditorController.title = UIConstants.Appearance.taskEditorTitleForEdit
+                            taskEditorController.colorScheme = self.colorScheme
                         }
                     }
                 }

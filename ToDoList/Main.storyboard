@@ -18,13 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sort By:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om6-Mp-0xL">
-                                <rect key="frame" x="16" y="20" width="69" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om6-Mp-0xL">
+                                <rect key="frame" x="16" y="34" width="60" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eRH-zq-f77">
-                                <rect key="frame" x="16" y="49" width="287" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Scheme:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-6f-aF9">
+                                <rect key="frame" x="16" y="97.5" width="109.5" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eRH-zq-f77">
+                                <rect key="frame" x="16" y="61.5" width="287" height="29"/>
                                 <segments>
                                     <segment title="Importance"/>
                                     <segment title="Due-Date"/>
@@ -32,11 +37,23 @@
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="valueChanged:" destination="YRG-VW-kGX" eventType="valueChanged" id="Ldp-NV-1Mm"/>
+                                    <action selector="sortOrderChanged:" destination="YRG-VW-kGX" eventType="valueChanged" id="xSU-FB-ABY"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVX-IF-K42">
-                                <rect key="frame" x="229" y="85" width="74" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pzC-1Q-an5">
+                                <rect key="frame" x="16" y="125" width="287" height="29"/>
+                                <segments>
+                                    <segment title="Default"/>
+                                    <segment title="Blue"/>
+                                    <segment title="?"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="colorSchemeChanged:" destination="YRG-VW-kGX" eventType="valueChanged" id="2CS-6n-swQ"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVX-IF-K42">
+                                <rect key="frame" x="244" y="161" width="59" height="32"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <state key="normal" title="Dismiss"/>
                                 <connections>
@@ -45,8 +62,23 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nKc-6f-aF9" firstAttribute="leading" secondItem="9Ug-Kl-N5m" secondAttribute="leadingMargin" id="4Ss-u2-oU7"/>
+                            <constraint firstItem="eRH-zq-f77" firstAttribute="width" secondItem="pzC-1Q-an5" secondAttribute="width" id="IL3-29-2Pi"/>
+                            <constraint firstItem="vVX-IF-K42" firstAttribute="trailing" secondItem="pzC-1Q-an5" secondAttribute="trailing" id="U73-kh-dyV"/>
+                            <constraint firstItem="om6-Mp-0xL" firstAttribute="leading" secondItem="9Ug-Kl-N5m" secondAttribute="leadingMargin" id="ZOj-gJ-A6E"/>
+                            <constraint firstItem="eRH-zq-f77" firstAttribute="top" secondItem="om6-Mp-0xL" secondAttribute="bottom" constant="8" symbolic="YES" id="aKf-PP-jZx"/>
+                            <constraint firstItem="eRH-zq-f77" firstAttribute="leading" secondItem="9Ug-Kl-N5m" secondAttribute="leadingMargin" id="eL4-wZ-YNB"/>
+                            <constraint firstItem="nKc-6f-aF9" firstAttribute="top" secondItem="eRH-zq-f77" secondAttribute="bottom" constant="8" symbolic="YES" id="gbe-b2-1lj"/>
+                            <constraint firstItem="vVX-IF-K42" firstAttribute="top" secondItem="pzC-1Q-an5" secondAttribute="bottom" constant="8" symbolic="YES" id="kn2-md-8vy"/>
+                            <constraint firstItem="om6-Mp-0xL" firstAttribute="top" secondItem="JKI-cv-FbO" secondAttribute="bottom" constant="14" id="lbr-Hf-skT"/>
+                            <constraint firstItem="pzC-1Q-an5" firstAttribute="top" secondItem="nKc-6f-aF9" secondAttribute="bottom" constant="8" symbolic="YES" id="sO5-Ir-8PO"/>
+                            <constraint firstItem="pzC-1Q-an5" firstAttribute="leading" secondItem="9Ug-Kl-N5m" secondAttribute="leadingMargin" id="wtl-tP-fcm"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="colorSchemeLabel" destination="nKc-6f-aF9" id="CdN-pJ-dkp"/>
+                        <outlet property="colorSchemeSegmentedControl" destination="pzC-1Q-an5" id="J5w-O7-2GT"/>
                         <outlet property="dismissButton" destination="vVX-IF-K42" id="aRe-hl-KuH"/>
                         <outlet property="sortByLabel" destination="om6-Mp-0xL" id="w2j-a5-fea"/>
                         <outlet property="sortBySegmentedControl" destination="eRH-zq-f77" id="7uA-eu-xyr"/>

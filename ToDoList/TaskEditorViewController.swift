@@ -15,6 +15,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
     var viewNeedsToAnimate: Bool = false
+    var colorScheme = UIConstants.Colors.ColorScheme.Default.rawValue
     
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var importanceHeaderLabel: UILabel!
@@ -56,19 +57,38 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     }
     
     private func implementColorScheme() {
-        nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
-        importanceHeaderLabel.textColor = UIConstants.Colors.highImportanceColor
-        lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
-        highImportanceLabel.textColor = UIConstants.Colors.highImportanceColor
-        detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
-        dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
-        cancelButton.tintColor = UIConstants.Colors.DefaultColorScheme.cancelButtonColor
-        saveButton.tintColor = UIConstants.Colors.DefaultColorScheme.saveButtonColor
+        switch colorScheme {
+        case UIConstants.Colors.ColorScheme.Default.rawValue:
+            nameHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.nameLabelColor
+            importanceHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.importanceLabelColor
+            lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
+            highImportanceLabel.textColor = UIConstants.Colors.highImportanceColor
+            detailsHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.detailsLabelColor
+            dueDateHeaderLabel.textColor = UIConstants.Colors.DefaultColorScheme.dueDateLabelColor
+            cancelButton.tintColor = UIConstants.Colors.DefaultColorScheme.cancelButtonColor
+            saveButton.tintColor = UIConstants.Colors.DefaultColorScheme.saveButtonColor
             
-        self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
-        nameTextField.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
-        detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
-        importanceSlider.tintColor = UIColor.blackColor()
+            self.view.backgroundColor = UIConstants.Colors.DefaultColorScheme.mainBackgroundColor
+            nameTextField.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+            detailsTextView.backgroundColor = UIConstants.Colors.DefaultColorScheme.secondaryBackgroundColor
+            importanceSlider.tintColor = UIColor.blackColor()
+        case UIConstants.Colors.ColorScheme.Blue.rawValue:
+            nameHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.nameLabelColor
+            importanceHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.importanceLabelColor
+            lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
+            highImportanceLabel.textColor = UIConstants.Colors.highImportanceColor
+            detailsHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.detailsLabelColor
+            dueDateHeaderLabel.textColor = UIConstants.Colors.BlueColorScheme.dueDateLabelColor
+            cancelButton.tintColor = UIConstants.Colors.BlueColorScheme.cancelButtonColor
+            saveButton.tintColor = UIConstants.Colors.BlueColorScheme.saveButtonColor
+            
+            self.view.backgroundColor = UIConstants.Colors.BlueColorScheme.mainBackgroundColor
+            nameTextField.backgroundColor = UIConstants.Colors.BlueColorScheme.secondaryBackgroundColor
+            detailsTextView.backgroundColor = UIConstants.Colors.BlueColorScheme.secondaryBackgroundColor
+            importanceSlider.tintColor = UIColor.blackColor()
+        default:
+            println("printing from the default case of the implementColorScheme method in the TaskEditorViewController class")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
