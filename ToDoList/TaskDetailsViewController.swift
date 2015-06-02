@@ -56,7 +56,7 @@ class TaskDetailsViewController: UIViewController {
             importanceHeaderLabel.textColor = scheme.importanceLabelColor
             createdDateHeaderLabel.textColor = scheme.createdDateLabelColor
             dueDateHeaderLabel.textColor = scheme.dueDateLabelColor
-            dueDateLabel.textColor = scheme.dueDateTextColor
+            dueDateLabel.textColor = scheme.detailsViewDueDateTextColor
             detailsHeaderLabel.textColor = scheme.detailsLabelColor
             editButton.tintColor = scheme.editButtonColor
         }

@@ -23,9 +23,10 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     @IBOutlet weak var lowImportanceLabel: UILabel!
     @IBOutlet weak var highImportanceLabel: UILabel!
     @IBOutlet weak var detailsHeaderLabel: UILabel!
+    @IBOutlet weak var dueDateHeaderLabel: UILabel!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var selectDueDateButton: UIButton!
+    @IBOutlet weak var changeButton: UIButton!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var importanceSlider: UISlider!
@@ -74,8 +75,10 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
             detailsHeaderLabel.textColor = scheme.detailsLabelColor
             cancelButton.tintColor = scheme.cancelButtonColor
             saveButton.tintColor = scheme.saveButtonColor
-            selectDueDateButton.tintColor = scheme.selectDueDateButtonColor
-            dueDateLabel.textColor = scheme.dueDateTextColor
+            
+            dueDateHeaderLabel.textColor = scheme.dueDateHeaderLabelColor
+            changeButton.tintColor = scheme.changeButtonColor
+            dueDateLabel.textColor = scheme.editorViewDueDateTextColor
         }
         
         switch colorScheme {
