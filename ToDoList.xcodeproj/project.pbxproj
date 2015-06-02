@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FEAE73171B1D4072003A24E6 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */; };
+		FEAE73191B1D44D4003A24E6 /* DueDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73181B1D44D4003A24E6 /* DueDatePickerDelegate.swift */; };
 		FEE3652A1B1A48160081361C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365291B1A48160081361C /* AppDelegate.swift */; };
 		FEE3652D1B1A48160081361C /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEE3652B1B1A48160081361C /* ToDoList.xcdatamodeld */; };
 		FEE365341B1A48160081361C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE365331B1A48160081361C /* Images.xcassets */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		FEAE73181B1D44D4003A24E6 /* DueDatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DueDatePickerDelegate.swift; sourceTree = "<group>"; };
 		FEE365241B1A48150081361C /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE365281B1A48150081361C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEE365291B1A48160081361C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				FEE365551B1A49A10081361C /* TaskEditorViewController.swift */,
 				FEE365561B1A49A10081361C /* TaskDetailsViewController.swift */,
 				FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */,
+				FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			children = (
 				FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */,
 				FEEE5CC81B1BFF7B00D367C9 /* ColorSchemeProtocol.swift */,
+				FEAE73181B1D44D4003A24E6 /* DueDatePickerDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -300,6 +306,8 @@
 				FEE3652D1B1A48160081361C /* ToDoList.xcdatamodeld in Sources */,
 				FEE365511B1A496E0081361C /* TaskTableViewCell.swift in Sources */,
 				FEE365571B1A49A10081361C /* ToDoListTableViewController.swift in Sources */,
+				FEAE73191B1D44D4003A24E6 /* DueDatePickerDelegate.swift in Sources */,
+				FEAE73171B1D4072003A24E6 /* DatePickerViewController.swift in Sources */,
 				FEE365621B1A49CB0081361C /* UIConstants.swift in Sources */,
 				FEE365591B1A49A10081361C /* TaskDetailsViewController.swift in Sources */,
 				FEE365581B1A49A10081361C /* TaskEditorViewController.swift in Sources */,

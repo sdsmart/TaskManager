@@ -14,7 +14,6 @@ class TaskDetailsViewController: UIViewController {
     // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
-    var dateFormatter: NSDateFormatter?
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
     
     @IBOutlet weak var nameHeaderLabel: UILabel!
@@ -42,14 +41,10 @@ class TaskDetailsViewController: UIViewController {
     private func initialViewSetup() {
         implementColorCheme()
         
-        detailsTextView.layer.borderWidth = CGFloat(0.5)
+        detailsTextView.layer.borderWidth = UIConstants.Appearance.textViewBorderWidth
         detailsTextView.layer.borderColor = UIColor.blackColor().CGColor
         detailsTextView.layer.cornerRadius = UIConstants.Appearance.textViewBorderRadius
         detailsTextView.clipsToBounds = true
-        
-        dateFormatter = NSDateFormatter()
-        dateFormatter!.dateStyle = NSDateFormatterStyle.LongStyle
-        dateFormatter!.timeStyle = NSDateFormatterStyle.ShortStyle
     }
     
     private func implementColorCheme() {
@@ -82,8 +77,8 @@ class TaskDetailsViewController: UIViewController {
         if taskManaged != nil {
             updateImportanceTextColor()
             
-            let createdDate = dateFormatter?.stringFromDate(taskManaged!.createdDate)
-            let dueDate = dateFormatter?.stringFromDate(taskManaged!.dueDate)
+            let createdDate = getStringFromDate(taskManaged!.createdDate)
+            let dueDate = getStringFromDate(taskManaged!.dueDate)
             
             createdDateLabel.text = createdDate
             dueDateLabel.text = dueDate
@@ -91,6 +86,21 @@ class TaskDetailsViewController: UIViewController {
             importanceLabel.text = "\(taskManaged!.importance)"
             detailsTextView.text = taskManaged!.details
         }
+    }
+    
+    private func getStringFromDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        let dueDateText = dateFormatter.stringFromDate(date)
+        let stringLength = count(dueDateText)
+        var ierror: NSError?
+        var regex: NSRegularExpression = NSRegularExpression(pattern: ",\\s\\d+",
+            options: NSRegularExpressionOptions.CaseInsensitive,
+            error: &ierror)!
+        var dueDateTextWithoutYear = regex.stringByReplacingMatchesInString(dueDateText,
+            options: nil, range: NSMakeRange(0, stringLength), withTemplate: "")
+        return dueDateTextWithoutYear
     }
     
     private func updateImportanceTextColor() {

@@ -31,10 +31,14 @@ public protocol ColorSchemeProtocol {
     var importanceLabelColor: UIColor { get }
     var createdDateLabelColor: UIColor { get }
     var dueDateLabelColor: UIColor { get }
-    var dueDateTextColor: UIColor { get }
     var detailsLabelColor: UIColor { get }
     var backButtonColor: UIColor { get }
     var editButtonColor: UIColor { get }
     var cancelButtonColor: UIColor { get }
     var saveButtonColor: UIColor { get }
+    var selectDueDateButtonColor: UIColor { get }
+    var dueDateTextColor: UIColor { get }
+    
+    // DueDatePicker View Colors
+    var dueDateSaveButtonColor: UIColor { get }
 }

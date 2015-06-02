@@ -9,29 +9,30 @@
 import UIKit
 import CoreData
 
-class TaskEditorViewController: UIViewController, UITextViewDelegate {
+class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverPresentationControllerDelegate, DueDatePickerDelegate {
 
     // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
     var viewNeedsToAnimate: Bool = false
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
+    var dueDate = NSDate()
     
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var importanceHeaderLabel: UILabel!
     @IBOutlet weak var lowImportanceLabel: UILabel!
     @IBOutlet weak var highImportanceLabel: UILabel!
     @IBOutlet weak var detailsHeaderLabel: UILabel!
-    @IBOutlet weak var dueDateHeaderLabel: UILabel!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var selectDueDateButton: UIButton!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var importanceSlider: UISlider!
     @IBOutlet weak var importanceLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
@@ -49,11 +50,13 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
         swipeGestureRecognizer.addTarget(self, action: "swipeGestureReceived")
         tapGestureRecognizer.addTarget(self, action: "tapGestureReceived")
         
-        detailsTextView.layer.borderWidth = CGFloat(0.5)
+        detailsTextView.layer.borderWidth = UIConstants.Appearance.textViewBorderWidth
         detailsTextView.layer.borderColor = UIColor.blackColor().CGColor
-        detailsTextView.layer.cornerRadius = 4
+        detailsTextView.layer.cornerRadius = UIConstants.Appearance.textViewBorderRadius
         detailsTextView.clipsToBounds = true
         detailsTextView.delegate = self
+        
+        dueDateLabel.text = getStringFromDate(dueDate)
         
         lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
         highImportanceLabel.textColor = UIConstants.Colors.highImportanceColor
@@ -69,9 +72,10 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
             nameHeaderLabel.textColor = scheme.nameLabelColor
             importanceHeaderLabel.textColor = scheme.importanceLabelColor
             detailsHeaderLabel.textColor = scheme.detailsLabelColor
-            dueDateHeaderLabel.textColor = scheme.dueDateLabelColor
             cancelButton.tintColor = scheme.cancelButtonColor
             saveButton.tintColor = scheme.saveButtonColor
+            selectDueDateButton.tintColor = scheme.selectDueDateButtonColor
+            dueDateLabel.textColor = scheme.dueDateTextColor
         }
         
         switch colorScheme {
@@ -156,6 +160,34 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: UIPopoverPresentationControllerDelegate Methods
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!, traitCollection: UITraitCollection!) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+    // MARK: DueDatePickerDelegate Methods
+    func didSelectDueDate(sender: DatePickerViewController, selectedDueDate: NSDate) {
+        dueDate = selectedDueDate
+        
+        let dueDateText = getStringFromDate(selectedDueDate)
+        dueDateLabel.text = dueDateText
+    }
+    
+    private func getStringFromDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        let dueDateText = dateFormatter.stringFromDate(date)
+        let stringLength = count(dueDateText)
+        var ierror: NSError?
+        var regex: NSRegularExpression = NSRegularExpression(pattern: ",\\s\\d+",
+                                        options: NSRegularExpressionOptions.CaseInsensitive,
+                                        error: &ierror)!
+        var dueDateTextWithoutYear = regex.stringByReplacingMatchesInString(dueDateText,
+                    options: nil, range: NSMakeRange(0, stringLength), withTemplate: "")
+        return dueDateTextWithoutYear
+    }
+    
     // MARK: Action Methods
     @IBAction func valueChanged(sender: UISlider) {
         updateImportanceLabel()
@@ -164,14 +196,15 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         if !nameTextField.text.isEmpty {
             if taskManaged != nil {
-                taskManaged!.dueDate = dueDatePicker.date
+                
+                taskManaged!.dueDate = dueDate
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
                 taskManaged!.importance = importanceLabel.text!.toInt()!
             } else {
                 let task = NSEntityDescription.insertNewObjectForEntityForName(CoreDataConstants.taskEntityName, inManagedObjectContext: managedObjectContext) as! TaskManaged
                 
-                task.dueDate = dueDatePicker.date
+                task.dueDate = dueDate
                 task.createdDate = NSDate()
                 task.name = nameTextField.text
                 task.details = detailsTextView.text
@@ -187,5 +220,24 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate {
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: Navigation Methods
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case StoryboardConstants.SegueIdentifiers.pickDateSegue:
+                if let destinationVC = segue.destinationViewController as? DatePickerViewController {
+                    if let popVC = destinationVC.popoverPresentationController {
+                        popVC.delegate = self
+                    }
+                    
+                    destinationVC.delegate = self
+                    destinationVC.colorScheme = colorScheme
+                }
+            default:
+                println("printing from the default case of the prepareForSegue method in the TaskEditorViewController class")
+            }
+        }
     }
 }

@@ -14,8 +14,10 @@ public struct UIConstants {
     public struct Appearance {
         static let taskEditorTitleForAdd = "Add Task"
         static let taskEditorTitleForEdit = "Edit Task"
+        static let selectDueDateButtonBorderRadius: CGFloat = 8.0
         static let textViewBorderRadius: CGFloat = 4.0
-        static let optionsViewControllerSize = CGSize(width: 320.0, height: 180.0)
+        static let textViewBorderWidth: CGFloat = 0.5
+        static let optionsViewControllerSize = CGSize(width: 295.0, height: 180.0)
     }
     
     public struct Animation {
@@ -54,12 +56,16 @@ public struct UIConstants {
             public var importanceLabelColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
             public var createdDateLabelColor = UIColor(red: 45/255.0, green: 50/255.0, blue: 75/255.0, alpha: 1.0)
             public var dueDateLabelColor = UIColor(red: 94/255.0, green: 10/255.0, blue: 0/255.0, alpha: 1.0)
-            public var dueDateTextColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 240/255.0, alpha: 1.0)
             public var detailsLabelColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
             public var backButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
             public var editButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
             public var cancelButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
             public var saveButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
+            public var selectDueDateButtonColor = UIColor(red: 45/255.0, green: 50/255.0, blue: 75/255.0, alpha: 1.0)
+            public var dueDateTextColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
+            
+            // DueDatePicker View Colors
+            public var dueDateSaveButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
         }
         
         public struct BlueColorScheme: ColorSchemeProtocol {
@@ -85,12 +91,16 @@ public struct UIConstants {
             public var importanceLabelColor = UIColor(red: 65/255.0, green: 34/255.0, blue: 115/255.0, alpha: 1.0)
             public var createdDateLabelColor = UIColor(red: 135/255.0, green: 94/255.0, blue: 20/255.0, alpha: 1.0)
             public var dueDateLabelColor = UIColor(red: 94/255.0, green: 10/255.0, blue: 0/255.0, alpha: 1.0)
-            public var dueDateTextColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 225/255.0, alpha: 1.0)
             public var detailsLabelColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
             public var backButtonColor = UIColor(red: 170/255.0, green: 5/255.0, blue: 0/255.0, alpha: 1.0)
             public var editButtonColor = UIColor(red: 170/255.0, green: 5/255.0, blue: 0/255.0, alpha: 1.0)
             public var cancelButtonColor = UIColor(red: 170/255.0, green: 5/255.0, blue: 0/255.0, alpha: 1.0)
             public var saveButtonColor = UIColor(red: 170/255.0, green: 5/255.0, blue: 0/255.0, alpha: 1.0)
+            public var selectDueDateButtonColor = UIColor(red: 135/255.0, green: 94/255.0, blue: 20/255.0, alpha: 1.0)
+            public var dueDateTextColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
+            
+            // DueDatePicker View Colors
+            public var dueDateSaveButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
         }
         
         public struct RedColorScheme: ColorSchemeProtocol {
@@ -115,13 +125,17 @@ public struct UIConstants {
             public var nameLabelColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 200/255.0, alpha: 1.0)
             public var importanceLabelColor = UIColor(red: 65/255.0, green: 34/255.0, blue: 115/255.0, alpha: 1.0)
             public var createdDateLabelColor = UIColor(red: 10/255.0, green: 50/255.0, blue: 15/255.0, alpha: 1.0)
-            public var dueDateLabelColor = UIColor(red: 94/255.0, green: 10/255.0, blue: 0/255.0, alpha: 1.0)
-            public var dueDateTextColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 180/255.0, alpha: 1.0)
+            public var dueDateLabelColor = UIColor(red: 0/255.0, green: 100/255.0, blue: 0/255.0, alpha: 1.0)
             public var detailsLabelColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
             public var backButtonColor = UIColor(red: 70/255.0, green: 0/255.0, blue: 92/255.0, alpha: 1.0)
             public var editButtonColor = UIColor(red: 70/255.0, green: 0/255.0, blue: 92/255.0, alpha: 1.0)
             public var cancelButtonColor = UIColor(red: 70/255.0, green: 0/255.0, blue: 92/255.0, alpha: 1.0)
             public var saveButtonColor = UIColor(red: 70/255.0, green: 0/255.0, blue: 92/255.0, alpha: 1.0)
+            public var selectDueDateButtonColor = UIColor(red: 10/255.0, green: 50/255.0, blue: 15/255.0, alpha: 1.0)
+            public var dueDateTextColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 230/255.0, alpha: 1.0)
+            
+            // DueDatePicker View Colors
+            public var dueDateSaveButtonColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 150/255.0, alpha: 1.0)
         }
         
         static let highImportanceColor = UIColor(red: 190/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
