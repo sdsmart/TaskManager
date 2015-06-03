@@ -57,7 +57,7 @@ class DatePickerViewController: UIViewController {
         case UIConstants.Colors.ColorScheme.redScheme:
             implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
-            println("printing from the default case of the implementColorScheme method in the DatePickerViewController class")
+            break
         }
     }
     

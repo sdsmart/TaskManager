@@ -15,6 +15,7 @@ class OptionsViewController: UIViewController {
     var initialSortBySegmentedControlIndex = 0
     var initialColorSchemeSegmentedControlIndex = 0
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
+    
     override var preferredContentSize: CGSize {
         get {
             if presentingViewController != nil {
@@ -37,9 +38,9 @@ class OptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        implementColorScheme()
         sortBySegmentedControl.selectedSegmentIndex = initialSortBySegmentedControlIndex
         colorSchemeSegmentedControl.selectedSegmentIndex = initialColorSchemeSegmentedControlIndex
+        implementColorScheme()
     }
     
     private func implementColorScheme() {
@@ -58,7 +59,7 @@ class OptionsViewController: UIViewController {
         case UIConstants.Colors.ColorScheme.redScheme:
             implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
-            println("printing from the default case of the implementColorScheme method in the OptionsViewController clasas")
+            break
         }
     }
     
@@ -72,29 +73,26 @@ class OptionsViewController: UIViewController {
         case 2:
             delegate?.didSetSortOrder(self, selectedSortOrder: CoreDataConstants.sortDescriptorKeyCreatedDate)
         default:
-            println("printing from the sortOrderChanged method in the OptionsViewController class")
+            break
         }
     }
     
     @IBAction func colorSchemeChanged(sender: UISegmentedControl) {
         switch colorSchemeSegmentedControl.selectedSegmentIndex {
         case 0:
-            let cs = UIConstants.Colors.ColorScheme.defaultScheme
-            colorScheme = cs
+            colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
             implementColorScheme()
-            delegate?.didSetColorScheme(self, selectedColorScheme: cs)
+            delegate?.didSetColorScheme(self, selectedColorScheme: colorScheme)
         case 1:
-            let cs = UIConstants.Colors.ColorScheme.blueScheme
-            colorScheme = cs
+            colorScheme = UIConstants.Colors.ColorScheme.blueScheme
             implementColorScheme()
-            delegate?.didSetColorScheme(self, selectedColorScheme: cs)
+            delegate?.didSetColorScheme(self, selectedColorScheme: colorScheme)
         case 2:
-            let cs = UIConstants.Colors.ColorScheme.redScheme
-            colorScheme = cs
+            colorScheme = UIConstants.Colors.ColorScheme.redScheme
             implementColorScheme()
-            delegate?.didSetColorScheme(self, selectedColorScheme: cs)
+            delegate?.didSetColorScheme(self, selectedColorScheme: colorScheme)
         default:
-            println("printing from the default case in the colorSchemeChanged method in the OptionsViewController class")
+            break
         }
     }
     

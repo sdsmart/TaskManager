@@ -26,7 +26,6 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var changeButton: UIButton!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var importanceSlider: UISlider!
     @IBOutlet weak var importanceLabel: UILabel!
@@ -60,8 +59,9 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
             dueDateLabel.text = getStringFromDate(dueDate!)
         } else {
             let currentDate = NSDate()
-            dueDate = currentDate.dateByAddingTimeInterval(86400)
-            dueDateLabel.text = getStringFromDate(dueDate!)
+            let currentDatePlusOneDay = currentDate.dateByAddingTimeInterval(86400)
+            dueDate = currentDatePlusOneDay
+            dueDateLabel.text = getStringFromDate(currentDatePlusOneDay)
         }
         
         lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
@@ -94,7 +94,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         case UIConstants.Colors.ColorScheme.redScheme:
             implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
-            println("printing from the default case of the implementColorScheme method in the TaskEditorViewController class")
+            break
         }
     }
     
@@ -124,16 +124,16 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         case 1...3:
             importanceLabel.textColor = UIConstants.Colors.lowImportanceColor
         default:
-            println("printing from the default case of the updateImportanceTextColor method in the TaskEditorViewController class")
+            break
         }
     }
     
-    private func updateImportanceLabel()
+    private func updateImportanceLabelToSliderValue(sliderValue: Int)
     {
-        updateImportanceTextColor()
-        let importance = Int(round(importanceSlider.value))
+        let importance = sliderValue
         importanceLabel.text = "\(importance)"
         importanceSlider.value = Float(importance)
+        updateImportanceTextColor()
     }
     
     // MARK: Gesture Recognizer Methods
@@ -173,7 +173,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         return UIModalPresentationStyle.None
     }
     
-    // MARK: DueDatePickerDelegate Methods
+    // MARK: DatePickerDelegate Methods
     func didSelectDate(sender: DatePickerViewController, selectedDate: NSDate) {
         dueDate = selectedDate
         
@@ -182,8 +182,9 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     }
     
     // MARK: Action Methods
-    @IBAction func valueChanged(sender: UISlider) {
-        updateImportanceLabel()
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        let sliderValue = Int(round(importanceSlider.value))
+        updateImportanceLabelToSliderValue(sliderValue)
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
@@ -236,7 +237,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                     }
                 }
             default:
-                println("printing from the default case of the prepareForSegue method in the TaskEditorViewController class")
+                break
             }
         }
     }

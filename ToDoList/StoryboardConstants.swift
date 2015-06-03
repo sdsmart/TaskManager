@@ -19,6 +19,6 @@ public struct StoryboardConstants {
         static let taskDetailsSegue = "TaskDetailsSegue"
         static let editTaskSegue = "EditTaskSegue"
         static let optionsSegue = "OptionsSegue"
-        static let pickDateSegue = "pickDateSegue"
+        static let pickDateSegue = "PickDateSegue"
     }
 }

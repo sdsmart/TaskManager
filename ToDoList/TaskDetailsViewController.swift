@@ -21,20 +21,23 @@ class TaskDetailsViewController: UIViewController {
     @IBOutlet weak var createdDateHeaderLabel: UILabel!
     @IBOutlet weak var dueDateHeaderLabel: UILabel!
     @IBOutlet weak var detailsHeaderLabel: UILabel!
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
-    
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     // MARK: View Controller Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialViewSetup()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        initialViewSetup()
         updateUI()
     }
     
@@ -69,7 +72,7 @@ class TaskDetailsViewController: UIViewController {
         case UIConstants.Colors.ColorScheme.redScheme:
             implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
-            println("printing from the default case of the implementColorScheme method in the TaskDetailsViewController class")
+            break
         }
     }
     
@@ -88,21 +91,6 @@ class TaskDetailsViewController: UIViewController {
         }
     }
     
-    private func getStringFromDate(date: NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        let dueDateText = dateFormatter.stringFromDate(date)
-        let stringLength = count(dueDateText)
-        var ierror: NSError?
-        var regex: NSRegularExpression = NSRegularExpression(pattern: ",\\s\\d+",
-            options: NSRegularExpressionOptions.CaseInsensitive,
-            error: &ierror)!
-        var dueDateTextWithoutYear = regex.stringByReplacingMatchesInString(dueDateText,
-            options: nil, range: NSMakeRange(0, stringLength), withTemplate: "")
-        return dueDateTextWithoutYear
-    }
-    
     private func updateImportanceTextColor() {
         if let importance = taskManaged?.importance {
             switch importance {
@@ -113,7 +101,7 @@ class TaskDetailsViewController: UIViewController {
             case 1...3:
                 importanceLabel.textColor = UIConstants.Colors.lowImportanceColor
             default:
-                println("printing from the default case of the updateImportanceTextColor method in the TaskDetailsViewController class")
+                break
             }
         }
     }
@@ -135,7 +123,7 @@ class TaskDetailsViewController: UIViewController {
                     }
                 }
             default:
-                println("printing from default case of the prepareForSegue method in the TaskDetailsViewController class")
+                break
             }
         }
     }
