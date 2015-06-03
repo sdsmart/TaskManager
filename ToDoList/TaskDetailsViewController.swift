@@ -127,9 +127,10 @@ class TaskDetailsViewController: UIViewController {
                     if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorViewController {
                         taskEditorController.managedObjectContext = self.managedObjectContext
                         if taskManaged != nil {
-                            taskEditorController.taskManaged = taskManaged
+                            taskEditorController.taskManaged = taskManaged!
                             taskEditorController.title = UIConstants.Appearance.taskEditorTitleForEdit
                             taskEditorController.colorScheme = self.colorScheme
+                            taskEditorController.dueDate = taskManaged!.dueDate
                         }
                     }
                 }

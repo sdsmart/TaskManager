@@ -49,7 +49,7 @@ class TaskTableViewCell: UITableViewCell {
         case UIConstants.Colors.ColorScheme.redScheme:
             implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
-            println("printing from the implementColorScheme method in the TaskTableViewCell class")
+            break
         }
     }
     
@@ -65,10 +65,8 @@ class TaskTableViewCell: UITableViewCell {
         if taskManaged != nil {
             titleLabel.text = taskManaged!.name
             
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-            let dueDateText = dateFormatter.stringFromDate(taskManaged!.dueDate)
-            let splitDateTextOnComma = split(dueDateText){$0 == ","}
+            let fullDueDateText = getStringFromDate(taskManaged!.dueDate)
+            let splitDateTextOnComma = split(fullDueDateText){$0 == ","}
             let dueDateMonthDayOnly = splitDateTextOnComma.first
             dueDateLabel.text = dueDateMonthDayOnly
             
@@ -82,7 +80,7 @@ class TaskTableViewCell: UITableViewCell {
             case 8...10:
                 importanceLabel.textColor = UIConstants.Colors.highImportanceColor
             default:
-                println("printing from default case of the updateUI method in the TaskTableViewCell class")
+                break
             }
         }
     }

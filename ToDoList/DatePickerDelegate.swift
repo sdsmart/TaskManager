@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol DueDatePickerDelegate {
-    func didSelectDueDate(sender: DatePickerViewController, selectedDueDate: NSDate)
+protocol DatePickerDelegate {
+    func didSelectDate(sender: DatePickerViewController, selectedDate: NSDate)
 }

@@ -9,14 +9,13 @@
 import UIKit
 import CoreData
 
-class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverPresentationControllerDelegate, DueDatePickerDelegate {
+class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverPresentationControllerDelegate, DatePickerDelegate {
 
     // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
     var taskManaged: TaskManaged? = nil
-    var viewNeedsToAnimate: Bool = false
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
-    var dueDate = NSDate()
+    var dueDate: NSDate? = nil
     
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var importanceHeaderLabel: UILabel!
@@ -57,7 +56,13 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         detailsTextView.clipsToBounds = true
         detailsTextView.delegate = self
         
-        dueDateLabel.text = getStringFromDate(dueDate)
+        if dueDate != nil {
+            dueDateLabel.text = getStringFromDate(dueDate!)
+        } else {
+            let currentDate = NSDate()
+            dueDate = currentDate.dateByAddingTimeInterval(86400)
+            dueDateLabel.text = getStringFromDate(dueDate!)
+        }
         
         lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
         highImportanceLabel.textColor = UIConstants.Colors.highImportanceColor
@@ -169,26 +174,11 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     }
     
     // MARK: DueDatePickerDelegate Methods
-    func didSelectDueDate(sender: DatePickerViewController, selectedDueDate: NSDate) {
-        dueDate = selectedDueDate
+    func didSelectDate(sender: DatePickerViewController, selectedDate: NSDate) {
+        dueDate = selectedDate
         
-        let dueDateText = getStringFromDate(selectedDueDate)
+        let dueDateText = getStringFromDate(selectedDate)
         dueDateLabel.text = dueDateText
-    }
-    
-    private func getStringFromDate(date: NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        let dueDateText = dateFormatter.stringFromDate(date)
-        let stringLength = count(dueDateText)
-        var ierror: NSError?
-        var regex: NSRegularExpression = NSRegularExpression(pattern: ",\\s\\d+",
-                                        options: NSRegularExpressionOptions.CaseInsensitive,
-                                        error: &ierror)!
-        var dueDateTextWithoutYear = regex.stringByReplacingMatchesInString(dueDateText,
-                    options: nil, range: NSMakeRange(0, stringLength), withTemplate: "")
-        return dueDateTextWithoutYear
     }
     
     // MARK: Action Methods
@@ -200,14 +190,18 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         if !nameTextField.text.isEmpty {
             if taskManaged != nil {
                 
-                taskManaged!.dueDate = dueDate
+                if dueDate != nil {
+                    taskManaged!.dueDate = dueDate!
+                }
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
                 taskManaged!.importance = importanceLabel.text!.toInt()!
             } else {
                 let task = NSEntityDescription.insertNewObjectForEntityForName(CoreDataConstants.taskEntityName, inManagedObjectContext: managedObjectContext) as! TaskManaged
                 
-                task.dueDate = dueDate
+                if dueDate != nil {
+                    task.dueDate = dueDate!
+                }
                 task.createdDate = NSDate()
                 task.name = nameTextField.text
                 task.details = detailsTextView.text
@@ -237,6 +231,9 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                     
                     destinationVC.delegate = self
                     destinationVC.colorScheme = colorScheme
+                    if dueDate != nil {
+                        destinationVC.initialDate = dueDate!
+                    }
                 }
             default:
                 println("printing from the default case of the prepareForSegue method in the TaskEditorViewController class")

@@ -12,8 +12,8 @@ import CoreData
 class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
     
     // MARK: Properties
-    var taskNeedingToBeDeleted: TaskManaged?
     var managedObjectContext: NSManagedObjectContext!
+    var taskNeedingToBeDeleted: TaskManaged?
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme {
         didSet {
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -82,11 +82,10 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.tableView.backgroundColor = scheme.mainBackgroundColor
             self.tableView.separatorColor = UIColor.blackColor()
+            self.navigationController?.navigationBar.tintColor = scheme.backButtonColor
             
             optionsButton.tintColor = scheme.optionsButtonColor
             newButton.tintColor = scheme.newButtonColor
-            
-            self.navigationController?.navigationBar.tintColor = scheme.backButtonColor
         }
         
         switch colorScheme {
@@ -97,7 +96,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         case UIConstants.Colors.ColorScheme.redScheme:
             implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
         default:
-            println("printing from the default case of implementColorScheme in the ToDoListTableViewController class")
+            break
         }
     }
     
@@ -147,11 +146,12 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
-            let task = fetchedResultsController.objectAtIndexPath(indexPath) as! TaskManaged
-            taskNeedingToBeDeleted = task
-            confirmDeleteTask(task)
+            if let task = fetchedResultsController.objectAtIndexPath(indexPath) as? TaskManaged {
+                taskNeedingToBeDeleted = task
+                confirmDeleteTask(task)
+            }
         default:
-            println("printing from default case of tableView-commitEditingStyle method")
+            break
         }
     }
     
@@ -210,7 +210,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
                 tableView.insertRowsAtIndexPaths([insertIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             }
         default:
-            println("printing from default case of controller-didChangeObject-atIndexPath method in ToDoListTableViewController class")
+            break
         }
     }
     
@@ -243,7 +243,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             case StoryboardConstants.SegueIdentifiers.optionsSegue:
                 prepareForOptionsSegue(sender, optionsSegue: segue)
             default:
-                println("printing from the prepareForSegue method in the ToDoListTableViewController class")
+                break
             }
         }
     }
@@ -252,7 +252,6 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         if let destinationVC = addSegue.destinationViewController as? UINavigationController {
             if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorViewController {
                 taskEditorController.managedObjectContext = self.managedObjectContext
-                taskEditorController.taskManaged = nil
                 taskEditorController.title = UIConstants.Appearance.taskEditorTitleForAdd
                 taskEditorController.colorScheme = colorScheme
             }
@@ -290,7 +289,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             case CoreDataConstants.sortDescriptorKeyCreatedDate:
                 destinationVC.initialSortBySegmentedControlIndex = 2
             default:
-                println("printing from default case (sortDescriptoryKey) of the prepareForOptionsSegue method in the ToDoListTableViewController class")
+                break
             }
             
             switch colorScheme {
@@ -301,7 +300,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             case UIConstants.Colors.ColorScheme.redScheme:
                 destinationVC.initialColorSchemeSegmentedControlIndex = 2
             default:
-                println("printing from the default case (colorScheme) of the prepareForOptionsSegue method in the ToDoListTableViewController class")
+                break
             }
         }
     }

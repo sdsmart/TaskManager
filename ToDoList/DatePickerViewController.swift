@@ -11,8 +11,9 @@ import UIKit
 class DatePickerViewController: UIViewController {
 
     // MARK: Properties
-    var delegate: DueDatePickerDelegate?
+    var delegate: DatePickerDelegate?
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
+    var initialDate: NSDate?
     
     override var preferredContentSize: CGSize {
         get {
@@ -35,6 +36,9 @@ class DatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if initialDate != nil {
+            dueDatePicker.date = initialDate!
+        }
         implementColorScheme()
     }
     
@@ -60,12 +64,12 @@ class DatePickerViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        delegate?.didSelectDueDate(self, selectedDueDate: dueDatePicker.date)
+        delegate?.didSelectDate(self, selectedDate: dueDatePicker.date)
     }
     
     // MARK: Action Methods
     @IBAction func saveButtonTapped(sender: UIButton) {
-        delegate?.didSelectDueDate(self, selectedDueDate: dueDatePicker.date)
+        delegate?.didSelectDate(self, selectedDate: dueDatePicker.date)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
