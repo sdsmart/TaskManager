@@ -16,16 +16,16 @@ class TaskDetailsViewController: UIViewController {
     var taskManaged: TaskManaged? = nil
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
     
-    @IBOutlet weak var nameHeaderLabel: UILabel!
-    @IBOutlet weak var importanceHeaderLabel: UILabel!
-    @IBOutlet weak var createdDateHeaderLabel: UILabel!
-    @IBOutlet weak var dueDateHeaderLabel: UILabel!
-    @IBOutlet weak var detailsHeaderLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
-    @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
+    @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var nameValueLabel: UILabel!
+    @IBOutlet weak var importanceValueLabel: UILabel!
+    @IBOutlet weak var detailsTextView: UITextView!
+    @IBOutlet weak var createdDateValueLabel: UILabel!
+    @IBOutlet weak var dueDateValueLabel: UILabel!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     // MARK: View Controller Lifecycle Methods
@@ -55,13 +55,13 @@ class TaskDetailsViewController: UIViewController {
             self.view.backgroundColor = scheme.mainBackgroundColor
             detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
             
-            nameHeaderLabel.textColor = scheme.nameLabelColor
-            importanceHeaderLabel.textColor = scheme.importanceLabelColor
-            createdDateHeaderLabel.textColor = scheme.createdDateLabelColor
-            dueDateHeaderLabel.textColor = scheme.dueDateLabelColor
-            dueDateLabel.textColor = scheme.detailsViewDueDateTextColor
-            detailsHeaderLabel.textColor = scheme.detailsLabelColor
-            editButton.tintColor = scheme.editButtonColor
+            nameLabel.textColor = scheme.nameLabelOnDetailsAndEditorViewControllerColor
+            importanceLabel.textColor = scheme.importanceLabelOnDetailsAndEditorViewControllerColor
+            createdDateLabel.textColor = scheme.createdDateLabelOnDetailsViewControllerColor
+            dueDateLabel.textColor = scheme.dueDateLabelOnDetailsAndEditorViewControllerColor
+            dueDateValueLabel.textColor = scheme.dueDateValueLabelOnDetailsAndEditorViewControllerColor
+            detailsLabel.textColor = scheme.detailsLabelOnDetailsAndEditorViewControllerColor
+            editButton.tintColor = scheme.editButtonOnDetailsViewControllerColor
         }
         
         switch colorScheme {
@@ -83,10 +83,10 @@ class TaskDetailsViewController: UIViewController {
             let createdDate = getStringFromDate(taskManaged!.createdDate)
             let dueDate = getStringFromDate(taskManaged!.dueDate)
             
-            createdDateLabel.text = createdDate
-            dueDateLabel.text = dueDate
-            nameLabel.text = taskManaged!.name
-            importanceLabel.text = "\(taskManaged!.importance)"
+            createdDateValueLabel.text = createdDate
+            dueDateValueLabel.text = dueDate
+            nameValueLabel.text = taskManaged!.name
+            importanceValueLabel.text = "\(taskManaged!.importance)"
             detailsTextView.text = taskManaged!.details
         }
     }
@@ -95,11 +95,11 @@ class TaskDetailsViewController: UIViewController {
         if let importance = taskManaged?.importance {
             switch importance {
             case 8...10:
-                importanceLabel.textColor = UIConstants.Colors.highImportanceColor
+                importanceValueLabel.textColor = UIConstants.Colors.highImportanceColor
             case 4...7:
-                importanceLabel.textColor = UIConstants.Colors.mediumImportanceColor
+                importanceValueLabel.textColor = UIConstants.Colors.mediumImportanceColor
             case 1...3:
-                importanceLabel.textColor = UIConstants.Colors.lowImportanceColor
+                importanceValueLabel.textColor = UIConstants.Colors.lowImportanceColor
             default:
                 break
             }

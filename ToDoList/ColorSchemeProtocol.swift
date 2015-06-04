@@ -18,29 +18,32 @@ public protocol ColorSchemeProtocol {
     var subtitleDueDateOnCellColor: UIColor { get }
     
     // ToDoList TableView Colors
-    var optionsButtonColor: UIColor { get }
-    var newButtonColor: UIColor { get }
+    var optionsButtonOnToDoListTableViewControllerColor: UIColor { get }
+    var newButtonOnToDoListTableViewControllerColor: UIColor { get }
     
     // Options View Colors
-    var sortByLabelColor: UIColor { get }
-    var colorSchemeLabelColor: UIColor { get }
-    var dismissButtonColor: UIColor { get }
+    var sortByLabelOnOptionsViewControllerColor: UIColor { get }
+    var colorSchemeLabelOnOptionsViewControllerColor: UIColor { get }
+    var dismissButtonOnOptionsViewControllerColor: UIColor { get }
     
-    // Details / Editor View Colors
-    var nameLabelColor: UIColor { get }
-    var importanceLabelColor: UIColor { get }
-    var createdDateLabelColor: UIColor { get }
-    var dueDateLabelColor: UIColor { get }
-    var detailsViewDueDateTextColor: UIColor { get }
-    var detailsLabelColor: UIColor { get }
-    var backButtonColor: UIColor { get }
-    var editButtonColor: UIColor { get }
-    var cancelButtonColor: UIColor { get }
-    var saveButtonColor: UIColor { get }
-    var dueDateHeaderLabelColor: UIColor { get }
-    var editorViewDueDateTextColor: UIColor { get }
-    var changeButtonColor: UIColor { get }
+    // Details And Editor View Shared Colors
+    var nameLabelOnDetailsAndEditorViewControllerColor: UIColor { get }
+    var importanceLabelOnDetailsAndEditorViewControllerColor: UIColor { get }
+    var dueDateLabelOnDetailsAndEditorViewControllerColor: UIColor { get }
+    var dueDateValueLabelOnDetailsAndEditorViewControllerColor: UIColor { get }
+    var detailsLabelOnDetailsAndEditorViewControllerColor: UIColor { get }
+    
+    
+    // Details View Only Colors
+    var backButtonOnDetailsViewControllerColor: UIColor { get }
+    var createdDateLabelOnDetailsViewControllerColor: UIColor { get }
+    var editButtonOnDetailsViewControllerColor: UIColor { get }
+    
+    // Editor View Only Colors
+    var cancelButtonOnEditorViewControllerColor: UIColor { get }
+    var saveButtonOnEditorViewControllerColor: UIColor { get }
+    var changeButtonOnEditorViewControllerColor: UIColor { get }
     
     // DueDatePicker View Colors
-    var dueDateSaveButtonColor: UIColor { get }
+    var saveButtonOnDatePickerViewControllerColor: UIColor { get }
 }

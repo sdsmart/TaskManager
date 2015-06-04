@@ -17,21 +17,20 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
     var dueDate: NSDate? = nil
     
-    @IBOutlet weak var nameHeaderLabel: UILabel!
-    @IBOutlet weak var importanceHeaderLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var lowImportanceLabel: UILabel!
     @IBOutlet weak var highImportanceLabel: UILabel!
-    @IBOutlet weak var detailsHeaderLabel: UILabel!
-    @IBOutlet weak var dueDateHeaderLabel: UILabel!
+    @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var importanceSlider: UISlider!
-    @IBOutlet weak var importanceLabel: UILabel!
-    @IBOutlet weak var dueDateLabel: UILabel!
+    @IBOutlet weak var importanceValueLabel: UILabel!
+    @IBOutlet weak var dueDateValueLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
-    @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
@@ -56,12 +55,12 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         detailsTextView.delegate = self
         
         if dueDate != nil {
-            dueDateLabel.text = getStringFromDate(dueDate!)
+            dueDateValueLabel.text = getStringFromDate(dueDate!)
         } else {
             let currentDate = NSDate()
             let currentDatePlusOneDay = currentDate.dateByAddingTimeInterval(86400)
             dueDate = currentDatePlusOneDay
-            dueDateLabel.text = getStringFromDate(currentDatePlusOneDay)
+            dueDateValueLabel.text = getStringFromDate(currentDatePlusOneDay)
         }
         
         lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
@@ -75,15 +74,15 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
             detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
             importanceSlider.tintColor = UIColor.blackColor()
             
-            nameHeaderLabel.textColor = scheme.nameLabelColor
-            importanceHeaderLabel.textColor = scheme.importanceLabelColor
-            detailsHeaderLabel.textColor = scheme.detailsLabelColor
-            cancelButton.tintColor = scheme.cancelButtonColor
-            saveButton.tintColor = scheme.saveButtonColor
+            nameLabel.textColor = scheme.nameLabelOnDetailsAndEditorViewControllerColor
+            importanceLabel.textColor = scheme.importanceLabelOnDetailsAndEditorViewControllerColor
+            detailsLabel.textColor = scheme.detailsLabelOnDetailsAndEditorViewControllerColor
+            cancelButton.tintColor = scheme.cancelButtonOnEditorViewControllerColor
+            saveButton.tintColor = scheme.saveButtonOnEditorViewControllerColor
             
-            dueDateHeaderLabel.textColor = scheme.dueDateHeaderLabelColor
-            changeButton.tintColor = scheme.changeButtonColor
-            dueDateLabel.textColor = scheme.editorViewDueDateTextColor
+            dueDateLabel.textColor = scheme.dueDateLabelOnDetailsAndEditorViewControllerColor
+            dueDateValueLabel.textColor = scheme.dueDateValueLabelOnDetailsAndEditorViewControllerColor
+            changeButton.tintColor = scheme.changeButtonOnEditorViewControllerColor
         }
         
         switch colorScheme {
@@ -106,7 +105,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     
     private func updateUI() {
         if taskManaged != nil {
-            importanceLabel.text = "\(taskManaged!.importance)"
+            importanceValueLabel.text = "\(taskManaged!.importance)"
             importanceSlider.value = Float(taskManaged!.importance)
             nameTextField.text = taskManaged!.name
             detailsTextView.text = taskManaged!.details
@@ -118,20 +117,20 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         let importance = Int(importanceSlider.value)
         switch importance {
         case 8...10:
-            importanceLabel.textColor = UIConstants.Colors.highImportanceColor
+            importanceValueLabel.textColor = UIConstants.Colors.highImportanceColor
         case 4...7:
-            importanceLabel.textColor = UIConstants.Colors.mediumImportanceColor
+            importanceValueLabel.textColor = UIConstants.Colors.mediumImportanceColor
         case 1...3:
-            importanceLabel.textColor = UIConstants.Colors.lowImportanceColor
+            importanceValueLabel.textColor = UIConstants.Colors.lowImportanceColor
         default:
             break
         }
     }
     
-    private func updateImportanceLabelToSliderValue(sliderValue: Int)
+    private func updateImportanceValueLabelToSliderValue(sliderValue: Int)
     {
         let importance = sliderValue
-        importanceLabel.text = "\(importance)"
+        importanceValueLabel.text = "\(importance)"
         importanceSlider.value = Float(importance)
         updateImportanceTextColor()
     }
@@ -178,13 +177,13 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         dueDate = selectedDate
         
         let dueDateText = getStringFromDate(selectedDate)
-        dueDateLabel.text = dueDateText
+        dueDateValueLabel.text = dueDateText
     }
     
     // MARK: Action Methods
     @IBAction func sliderValueChanged(sender: UISlider) {
         let sliderValue = Int(round(importanceSlider.value))
-        updateImportanceLabelToSliderValue(sliderValue)
+        updateImportanceValueLabelToSliderValue(sliderValue)
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
@@ -196,7 +195,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 }
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
-                taskManaged!.importance = importanceLabel.text!.toInt()!
+                taskManaged!.importance = importanceValueLabel.text!.toInt()!
             } else {
                 let task = NSEntityDescription.insertNewObjectForEntityForName(CoreDataConstants.taskEntityName, inManagedObjectContext: managedObjectContext) as! TaskManaged
                 
@@ -206,7 +205,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 task.createdDate = NSDate()
                 task.name = nameTextField.text
                 task.details = detailsTextView.text
-                task.importance = importanceLabel.text!.toInt()!
+                task.importance = importanceValueLabel.text!.toInt()!
             }
             managedObjectContext.save(nil)
             

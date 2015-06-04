@@ -27,7 +27,7 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
-    @IBOutlet weak var dueDateLabel: UILabel!
+    @IBOutlet weak var dueDateValueLabel: UILabel!
     
     // MARK: UpdateUI Methods
     override func awakeFromNib() {
@@ -38,7 +38,7 @@ class TaskTableViewCell: UITableViewCell {
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.backgroundColor = scheme.mainBackgroundColor
             self.contentView.backgroundColor = scheme.cellBackgroundColor
-            dueDateLabel.textColor = scheme.subtitleDueDateOnCellColor
+            dueDateValueLabel.textColor = scheme.subtitleDueDateOnCellColor
         }
         
         switch colorScheme {
@@ -66,9 +66,9 @@ class TaskTableViewCell: UITableViewCell {
             titleLabel.text = taskManaged!.name
             
             let fullDueDateText = getStringFromDate(taskManaged!.dueDate)
-            let splitDateTextOnComma = split(fullDueDateText){$0 == ","}
-            let dueDateMonthDayOnly = splitDateTextOnComma.first
-            dueDateLabel.text = dueDateMonthDayOnly
+            let splitDateTextOnSpace = split(fullDueDateText){$0 == " "}
+            let dueDateMonthDayOnly = splitDateTextOnSpace[0] + " " + splitDateTextOnSpace[1]
+            dueDateValueLabel.text = dueDateMonthDayOnly
             
             let importance = taskManaged!.importance
             importanceLabel.text = "\(importance)"

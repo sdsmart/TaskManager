@@ -213,7 +213,7 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dueDateLabel" destination="2aV-JF-GYT" id="RaV-zD-p3V"/>
+                                    <outlet property="dueDateValueLabel" destination="2aV-JF-GYT" id="J3C-xx-VfC"/>
                                     <outlet property="importanceLabel" destination="2ne-Kj-JVz" id="eFM-ZY-MP0"/>
                                     <outlet property="titleLabel" destination="iSp-Ye-A37" id="MeX-qO-pTj"/>
                                     <segue destination="D1s-H4-lPb" kind="show" identifier="TaskDetailsSegue" id="rjC-x4-P59"/>
@@ -346,7 +346,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXZ-Ul-ae7">
-                                <rect key="frame" x="109" y="149" width="22.5" height="24"/>
+                                <rect key="frame" x="113.5" y="149" width="22.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -412,7 +412,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vg-3P-CNa">
-                                <rect key="frame" x="215" y="561.5" width="58" height="32"/>
+                                <rect key="frame" x="215" y="561" width="58" height="32"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <state key="normal" title="Change">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -449,7 +449,7 @@
                             <constraint firstItem="VZ1-OQ-OQ1" firstAttribute="top" secondItem="UV3-iV-Lnw" secondAttribute="bottom" constant="14" id="D2c-3t-R6j"/>
                             <constraint firstItem="hez-ux-eus" firstAttribute="leading" secondItem="WKQ-aD-eJn" secondAttribute="leadingMargin" id="DG4-JV-EsT"/>
                             <constraint firstItem="hez-ux-eus" firstAttribute="trailing" secondItem="WKQ-aD-eJn" secondAttribute="trailingMargin" id="E02-IA-uZO"/>
-                            <constraint firstItem="HXZ-Ul-ae7" firstAttribute="leading" secondItem="hez-ux-eus" secondAttribute="trailing" constant="4" id="ETc-zL-qA8"/>
+                            <constraint firstItem="HXZ-Ul-ae7" firstAttribute="leading" secondItem="hez-ux-eus" secondAttribute="trailing" constant="8" symbolic="YES" id="ETc-zL-qA8"/>
                             <constraint firstItem="74y-k6-ZXj" firstAttribute="leading" secondItem="bIF-aG-s7J" secondAttribute="trailing" constant="8" symbolic="YES" id="ETd-Yq-Agt"/>
                             <constraint firstItem="VZ1-OQ-OQ1" firstAttribute="top" secondItem="6Vg-3P-CNa" secondAttribute="bottom" constant="9.5" id="FhB-k8-qkV"/>
                             <constraint firstItem="E2d-v5-wQv" firstAttribute="leading" secondItem="WKQ-aD-eJn" secondAttribute="leadingMargin" id="Foq-QA-hAp"/>
@@ -641,17 +641,16 @@
                     <connections>
                         <outlet property="cancelButton" destination="89X-or-ogl" id="WlB-qC-Zaz"/>
                         <outlet property="changeButton" destination="6Vg-3P-CNa" id="OYl-1K-55B"/>
-                        <outlet property="detailsHeaderLabel" destination="aLE-gV-leJ" id="Wfl-sF-8Ua"/>
-                        <outlet property="detailsLabel" destination="aLE-gV-leJ" id="PqK-yq-K8Q"/>
+                        <outlet property="detailsLabel" destination="aLE-gV-leJ" id="fmt-zB-bK8"/>
                         <outlet property="detailsTextView" destination="Wb3-aI-wXS" id="Lez-hH-CFs"/>
-                        <outlet property="dueDateHeaderLabel" destination="BtL-fj-vo3" id="iS8-1u-7Gu"/>
-                        <outlet property="dueDateLabel" destination="UV3-iV-Lnw" id="aZY-5J-1Hg"/>
+                        <outlet property="dueDateLabel" destination="BtL-fj-vo3" id="Gju-Cx-3ab"/>
+                        <outlet property="dueDateValueLabel" destination="UV3-iV-Lnw" id="QgC-x3-fA6"/>
                         <outlet property="highImportanceLabel" destination="74y-k6-ZXj" id="ilA-VC-cBF"/>
-                        <outlet property="importanceHeaderLabel" destination="hez-ux-eus" id="085-tg-Xuf"/>
-                        <outlet property="importanceLabel" destination="HXZ-Ul-ae7" id="Uc1-O8-qAY"/>
+                        <outlet property="importanceLabel" destination="hez-ux-eus" id="UTA-oX-WYI"/>
                         <outlet property="importanceSlider" destination="a3q-U4-eXi" id="FZV-We-QY8"/>
+                        <outlet property="importanceValueLabel" destination="HXZ-Ul-ae7" id="jbd-Ak-KVf"/>
                         <outlet property="lowImportanceLabel" destination="E2d-v5-wQv" id="Sdu-x6-cwU"/>
-                        <outlet property="nameHeaderLabel" destination="QGb-WW-nOD" id="pSS-ac-fZ2"/>
+                        <outlet property="nameLabel" destination="QGb-WW-nOD" id="aYP-oq-GTg"/>
                         <outlet property="nameTextField" destination="Gzn-ER-zbT" id="UjR-Pr-e2W"/>
                         <outlet property="saveButton" destination="nYQ-Gk-ipT" id="iep-oW-yge"/>
                         <outlet property="swipeGestureRecognizer" destination="DjJ-zj-bKc" id="nsA-dK-wFC"/>
@@ -733,12 +732,6 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Task Details" translatesAutoresizingMaskIntoConstraints="NO" id="Bpm-bJ-Uyu">
-                                <rect key="frame" x="16" y="214" width="568" height="330"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VG-7N-rwS">
                                 <rect key="frame" x="76" y="78" width="508" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -767,7 +760,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgg-My-LmR">
-                                <rect key="frame" x="108" y="101" width="476" height="24"/>
+                                <rect key="frame" x="113.5" y="101" width="470.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -776,6 +769,12 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Task Details" translatesAutoresizingMaskIntoConstraints="NO" id="Bpm-bJ-Uyu">
+                                <rect key="frame" x="16" y="214" width="568" height="330"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -795,7 +794,7 @@
                             <constraint firstItem="HOm-PM-cfb" firstAttribute="leading" secondItem="PB1-Rc-daX" secondAttribute="trailing" constant="8" symbolic="YES" id="MaN-MD-EoD"/>
                             <constraint firstItem="XVI-yJ-EOa" firstAttribute="top" secondItem="J7h-uU-zi7" secondAttribute="bottom" constant="8" symbolic="YES" id="O8X-fv-OXS"/>
                             <constraint firstItem="PB1-Rc-daX" firstAttribute="leading" secondItem="sdn-UV-TwX" secondAttribute="leadingMargin" id="XcJ-Tr-0lf"/>
-                            <constraint firstItem="Pgg-My-LmR" firstAttribute="leading" secondItem="J7h-uU-zi7" secondAttribute="trailing" constant="3" id="Ydf-Ij-Gpz"/>
+                            <constraint firstItem="Pgg-My-LmR" firstAttribute="leading" secondItem="J7h-uU-zi7" secondAttribute="trailing" constant="8" symbolic="YES" id="Ydf-Ij-Gpz"/>
                             <constraint firstItem="HOm-PM-cfb" firstAttribute="top" secondItem="rCy-Zn-hKS" secondAttribute="bottom" constant="8" symbolic="YES" id="ZjQ-jC-mkJ"/>
                             <constraint firstItem="nQe-f8-wot" firstAttribute="top" secondItem="knw-57-Cgn" secondAttribute="bottom" constant="14" id="Zvi-Zu-4DI"/>
                             <constraint firstItem="Pgg-My-LmR" firstAttribute="top" secondItem="0VG-7N-rwS" secondAttribute="bottom" constant="7.5" id="anM-0l-Nz1"/>
@@ -830,17 +829,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="createdDateHeaderLabel" destination="XVI-yJ-EOa" id="ydz-UB-h2s"/>
-                        <outlet property="createdDateLabel" destination="rCy-Zn-hKS" id="8wQ-9l-5se"/>
-                        <outlet property="detailsHeaderLabel" destination="G9Z-eh-sRR" id="wyN-fm-DGb"/>
+                        <outlet property="createdDateLabel" destination="XVI-yJ-EOa" id="eML-Dh-gh5"/>
+                        <outlet property="createdDateValueLabel" destination="rCy-Zn-hKS" id="4YK-7a-y0m"/>
+                        <outlet property="detailsLabel" destination="G9Z-eh-sRR" id="cF3-64-TT9"/>
                         <outlet property="detailsTextView" destination="Bpm-bJ-Uyu" id="3LZ-Tv-cbZ"/>
-                        <outlet property="dueDateHeaderLabel" destination="PB1-Rc-daX" id="Agn-3F-Pmh"/>
-                        <outlet property="dueDateLabel" destination="HOm-PM-cfb" id="cG7-EX-0Tq"/>
+                        <outlet property="dueDateLabel" destination="PB1-Rc-daX" id="pC5-Es-jUs"/>
+                        <outlet property="dueDateValueLabel" destination="HOm-PM-cfb" id="49W-WL-Ig8"/>
                         <outlet property="editButton" destination="Z4p-wt-DEV" id="zVh-tj-Ibw"/>
-                        <outlet property="importanceHeaderLabel" destination="J7h-uU-zi7" id="EqH-ZW-KRw"/>
-                        <outlet property="importanceLabel" destination="Pgg-My-LmR" id="Zfd-pC-B63"/>
-                        <outlet property="nameHeaderLabel" destination="nQe-f8-wot" id="ThQ-Xf-etQ"/>
-                        <outlet property="nameLabel" destination="0VG-7N-rwS" id="MAR-4W-Doj"/>
+                        <outlet property="importanceLabel" destination="J7h-uU-zi7" id="aD5-Q5-6Cs"/>
+                        <outlet property="importanceValueLabel" destination="Pgg-My-LmR" id="cZj-il-9ff"/>
+                        <outlet property="nameLabel" destination="nQe-f8-wot" id="eOm-h2-qBQ"/>
+                        <outlet property="nameValueLabel" destination="0VG-7N-rwS" id="lno-A9-u0g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VmV-LK-sZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -888,6 +887,6 @@
         <image name="disclosure_indicator" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7K0-TT-hbF"/>
+        <segue reference="jgf-8Q-FYo"/>
     </inferredMetricsTieBreakers>
 </document>

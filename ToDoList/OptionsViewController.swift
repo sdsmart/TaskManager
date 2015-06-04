@@ -46,9 +46,9 @@ class OptionsViewController: UIViewController {
     private func implementColorScheme() {
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.view.backgroundColor = scheme.secondaryBackgroundColor
-            sortByLabel.textColor = scheme.sortByLabelColor
-            dismissButton.tintColor = scheme.dismissButtonColor
-            colorSchemeLabel.textColor = scheme.colorSchemeLabelColor
+            sortByLabel.textColor = scheme.sortByLabelOnOptionsViewControllerColor
+            dismissButton.tintColor = scheme.dismissButtonOnOptionsViewControllerColor
+            colorSchemeLabel.textColor = scheme.colorSchemeLabelOnOptionsViewControllerColor
         }
         
         switch colorScheme {

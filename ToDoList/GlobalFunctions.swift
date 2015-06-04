@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 public func getStringFromDate(date: NSDate) -> String {
     let dateFormatter = NSDateFormatter()
@@ -22,11 +21,4 @@ public func getStringFromDate(date: NSDate) -> String {
     var dueDateTextWithoutYear = regex.stringByReplacingMatchesInString(dueDateText,
         options: nil, range: NSMakeRange(0, stringLength), withTemplate: "")
     return dueDateTextWithoutYear
-}
-
-public func UIColorFromRGB(#r: Int, #g: Int, #b: Int) -> UIColor {
-    return UIColor(red: CGFloat(r) / CGFloat(255.0),
-                   green: CGFloat(g) / CGFloat(255.0),
-                   blue: CGFloat(b) / CGFloat(255.0),
-                   alpha: 1.0)
 }

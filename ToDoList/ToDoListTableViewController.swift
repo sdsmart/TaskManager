@@ -82,10 +82,10 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.tableView.backgroundColor = scheme.mainBackgroundColor
             self.tableView.separatorColor = UIColor.blackColor()
-            self.navigationController?.navigationBar.tintColor = scheme.backButtonColor
+            self.navigationController?.navigationBar.tintColor = scheme.backButtonOnDetailsViewControllerColor
             
-            optionsButton.tintColor = scheme.optionsButtonColor
-            newButton.tintColor = scheme.newButtonColor
+            optionsButton.tintColor = scheme.optionsButtonOnToDoListTableViewControllerColor
+            newButton.tintColor = scheme.newButtonOnToDoListTableViewControllerColor
         }
         
         switch colorScheme {
