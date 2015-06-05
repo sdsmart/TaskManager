@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct StoryboardConstants {
+struct StoryboardConstants {
     
-    public struct CellIdentifiers {
+    struct CellIdentifiers {
         static let prototypeCellID = "TaskCell"
     }
     
-    public struct SegueIdentifiers {
+    struct SegueIdentifiers {
         static let addTaskSegue = "AddTaskSegue"
         static let taskDetailsSegue = "TaskDetailsSegue"
         static let editTaskSegue = "EditTaskSegue"

@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-public class TaskManaged: NSManagedObject {
+class TaskManaged: NSManagedObject {
     
     // MARK: Properties
-    @NSManaged public var uuid: String
-    @NSManaged public var name: String
-    @NSManaged public var details: String
-    @NSManaged public var importance: Int
-    @NSManaged public var createdDate: NSDate
-    @NSManaged public var dueDate: NSDate
+    @NSManaged var uuid: String
+    @NSManaged var name: String
+    @NSManaged var details: String
+    @NSManaged var importance: Int
+    @NSManaged var createdDate: NSDate
+    @NSManaged var dueDate: NSDate
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CoreDataConstants {
+struct CoreDataConstants {
     static let taskEntityName = "Task"
     
     static let sortDescriptorKeyImportance = "importance"

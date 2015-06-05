@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct NSUserDefaultsConstants {
+struct NSUserDefaultsConstants {
     static let sortDescriptorKey = "sortDescriptor"
     static let colorSchemeKey = "colorScheme"
 }
