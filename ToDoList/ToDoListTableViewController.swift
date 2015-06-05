@@ -82,10 +82,10 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.tableView.backgroundColor = scheme.mainBackgroundColor
             self.tableView.separatorColor = UIColor.blackColor()
-            self.navigationController?.navigationBar.tintColor = scheme.backButtonOnDetailsViewControllerColor
+            self.navigationController?.navigationBar.tintColor = scheme.buttonColor
             
-            optionsButton.tintColor = scheme.optionsButtonOnToDoListTableViewControllerColor
-            newButton.tintColor = scheme.newButtonOnToDoListTableViewControllerColor
+            optionsButton.tintColor = scheme.buttonColor
+            newButton.tintColor = scheme.buttonColor
         }
         
         switch colorScheme {
@@ -94,7 +94,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         case UIConstants.Colors.ColorScheme.blueScheme:
             implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
         case UIConstants.Colors.ColorScheme.redScheme:
-            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
+            implementColorSchemeHelper(UIConstants.Colors.YellowColorScheme())
         default:
             break
         }
@@ -116,9 +116,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
 
     // MARK: UITableViewDataSource Methods
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        let sections = fetchedResultsController.sections!
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
         
-        return sections.count
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -265,6 +267,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
                     destinationVC.managedObjectContext = self.managedObjectContext
                     destinationVC.taskManaged = task
                     destinationVC.colorScheme = colorScheme
+                    destinationVC.title = task.name
                     
                     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
                 }

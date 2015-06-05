@@ -16,12 +16,10 @@ class TaskDetailsViewController: UIViewController {
     var taskManaged: TaskManaged? = nil
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
     
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var importanceLabel: UILabel!
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var nameValueLabel: UILabel!
     @IBOutlet weak var importanceValueLabel: UILabel!
     @IBOutlet weak var detailsTextView: UITextView!
     @IBOutlet weak var createdDateValueLabel: UILabel!
@@ -55,13 +53,11 @@ class TaskDetailsViewController: UIViewController {
             self.view.backgroundColor = scheme.mainBackgroundColor
             detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
             
-            nameLabel.textColor = scheme.nameLabelOnDetailsAndEditorViewControllerColor
-            importanceLabel.textColor = scheme.importanceLabelOnDetailsAndEditorViewControllerColor
-            createdDateLabel.textColor = scheme.createdDateLabelOnDetailsViewControllerColor
-            dueDateLabel.textColor = scheme.dueDateLabelOnDetailsAndEditorViewControllerColor
-            dueDateValueLabel.textColor = scheme.dueDateValueLabelOnDetailsAndEditorViewControllerColor
-            detailsLabel.textColor = scheme.detailsLabelOnDetailsAndEditorViewControllerColor
-            editButton.tintColor = scheme.editButtonOnDetailsViewControllerColor
+            importanceLabel.textColor = scheme.labelColor
+            createdDateLabel.textColor = scheme.labelColor
+            dueDateLabel.textColor = scheme.labelColor
+            detailsLabel.textColor = scheme.labelColor
+            editButton.tintColor = scheme.buttonColor
         }
         
         switch colorScheme {
@@ -70,7 +66,7 @@ class TaskDetailsViewController: UIViewController {
         case UIConstants.Colors.ColorScheme.blueScheme:
             implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
         case UIConstants.Colors.ColorScheme.redScheme:
-            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
+            implementColorSchemeHelper(UIConstants.Colors.YellowColorScheme())
         default:
             break
         }
@@ -85,7 +81,6 @@ class TaskDetailsViewController: UIViewController {
             
             createdDateValueLabel.text = createdDate
             dueDateValueLabel.text = dueDate
-            nameValueLabel.text = taskManaged!.name
             importanceValueLabel.text = "\(taskManaged!.importance)"
             detailsTextView.text = taskManaged!.details
         }

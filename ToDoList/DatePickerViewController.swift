@@ -46,7 +46,7 @@ class DatePickerViewController: UIViewController {
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.view.backgroundColor = scheme.secondaryBackgroundColor
             
-            saveButton.tintColor = scheme.saveButtonOnDatePickerViewControllerColor
+            saveButton.tintColor = scheme.buttonColor
         }
         
         switch colorScheme {
@@ -55,7 +55,7 @@ class DatePickerViewController: UIViewController {
         case UIConstants.Colors.ColorScheme.blueScheme:
             implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
         case UIConstants.Colors.ColorScheme.redScheme:
-            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
+            implementColorSchemeHelper(UIConstants.Colors.YellowColorScheme())
         default:
             break
         }

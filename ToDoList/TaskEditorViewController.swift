@@ -74,15 +74,14 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
             detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
             importanceSlider.tintColor = UIColor.blackColor()
             
-            nameLabel.textColor = scheme.nameLabelOnDetailsAndEditorViewControllerColor
-            importanceLabel.textColor = scheme.importanceLabelOnDetailsAndEditorViewControllerColor
-            detailsLabel.textColor = scheme.detailsLabelOnDetailsAndEditorViewControllerColor
-            cancelButton.tintColor = scheme.cancelButtonOnEditorViewControllerColor
-            saveButton.tintColor = scheme.saveButtonOnEditorViewControllerColor
+            nameLabel.textColor = scheme.labelColor
+            importanceLabel.textColor = scheme.labelColor
+            detailsLabel.textColor = scheme.labelColor
+            cancelButton.tintColor = scheme.buttonColor
+            saveButton.tintColor = scheme.buttonColor
             
-            dueDateLabel.textColor = scheme.dueDateLabelOnDetailsAndEditorViewControllerColor
-            dueDateValueLabel.textColor = scheme.dueDateValueLabelOnDetailsAndEditorViewControllerColor
-            changeButton.tintColor = scheme.changeButtonOnEditorViewControllerColor
+            dueDateLabel.textColor = scheme.labelColor
+            changeButton.tintColor = scheme.buttonColor
         }
         
         switch colorScheme {
@@ -91,7 +90,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         case UIConstants.Colors.ColorScheme.blueScheme:
             implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
         case UIConstants.Colors.ColorScheme.redScheme:
-            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
+            implementColorSchemeHelper(UIConstants.Colors.YellowColorScheme())
         default:
             break
         }

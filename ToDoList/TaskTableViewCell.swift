@@ -38,7 +38,7 @@ class TaskTableViewCell: UITableViewCell {
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.backgroundColor = scheme.mainBackgroundColor
             self.contentView.backgroundColor = scheme.cellBackgroundColor
-            dueDateValueLabel.textColor = scheme.subtitleDueDateOnCellColor
+            dueDateValueLabel.textColor = scheme.labelColor
         }
         
         switch colorScheme {
@@ -47,7 +47,7 @@ class TaskTableViewCell: UITableViewCell {
         case UIConstants.Colors.ColorScheme.blueScheme:
             implementColorSchemeHelper(UIConstants.Colors.BlueColorScheme())
         case UIConstants.Colors.ColorScheme.redScheme:
-            implementColorSchemeHelper(UIConstants.Colors.RedColorScheme())
+            implementColorSchemeHelper(UIConstants.Colors.YellowColorScheme())
         default:
             break
         }
@@ -67,8 +67,14 @@ class TaskTableViewCell: UITableViewCell {
             
             let fullDueDateText = getStringFromDate(taskManaged!.dueDate)
             let splitDateTextOnSpace = split(fullDueDateText){$0 == " "}
-            let dueDateMonthDayOnly = splitDateTextOnSpace[0] + " " + splitDateTextOnSpace[1]
-            dueDateValueLabel.text = dueDateMonthDayOnly
+            var displayDate = ""
+            if fullDueDateText.lowercaseString.rangeOfString("today") != nil
+                || fullDueDateText.lowercaseString.rangeOfString("tomorrow") != nil {
+                displayDate = splitDateTextOnSpace[0]
+            } else {
+                displayDate = splitDateTextOnSpace[0] + " " + splitDateTextOnSpace[1]
+            }
+            dueDateValueLabel.text = displayDate
             
             let importance = taskManaged!.importance
             importanceLabel.text = "\(importance)"
