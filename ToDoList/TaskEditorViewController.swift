@@ -195,6 +195,8 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
                 taskManaged!.importance = importanceValueLabel.text!.toInt()!
+                
+                addLocalNotificationsForTask(taskManaged!)
             } else {
                 let task = NSEntityDescription.insertNewObjectForEntityForName(CoreDataConstants.taskEntityName, inManagedObjectContext: managedObjectContext) as! TaskManaged
                 
@@ -205,12 +207,37 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 task.name = nameTextField.text
                 task.details = detailsTextView.text
                 task.importance = importanceValueLabel.text!.toInt()!
+                
+                addLocalNotificationsForTask(task)
             }
             managedObjectContext.save(nil)
             
             self.view.endEditing(true)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    
+    private func addLocalNotificationsForTask(task: TaskManaged) {
+        var overDueNotification = UILocalNotification()
+        overDueNotification.alertBody = "Task: '\(task.name)' Is Overdue!"
+        overDueNotification.alertAction = "open"
+        overDueNotification.fireDate = task.dueDate
+        overDueNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(overDueNotification)
+        
+        var oneHourRemainingNotification = UILocalNotification()
+        oneHourRemainingNotification.alertBody = "Task: '\(task.name)' is due in one hour!"
+        oneHourRemainingNotification.alertAction = "open"
+        oneHourRemainingNotification.fireDate = task.dueDate.dateByAddingTimeInterval(-3600)
+        oneHourRemainingNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(oneHourRemainingNotification)
+        
+        var oneDayRemainingNotification = UILocalNotification()
+        oneDayRemainingNotification.alertBody = "You have 24 hours to complete Task: '\(task.name)'"
+        oneDayRemainingNotification.alertAction = "open"
+        oneDayRemainingNotification.fireDate = task.dueDate.dateByAddingTimeInterval(-86400)
+        oneDayRemainingNotification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(oneDayRemainingNotification)
     }
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
