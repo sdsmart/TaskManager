@@ -14,6 +14,7 @@ class DatePickerViewController: UIViewController {
     var delegate: DatePickerDelegate?
     var colorScheme = UIConstants.Colors.ColorScheme.defaultScheme
     var initialDate: NSDate?
+    var minimumDate: NSDate?
     
     override var preferredContentSize: CGSize {
         get {
@@ -38,6 +39,9 @@ class DatePickerViewController: UIViewController {
         
         if initialDate != nil {
             dueDatePicker.date = initialDate!
+        }
+        if minimumDate != nil {
+            dueDatePicker.minimumDate = minimumDate
         }
         implementColorScheme()
     }

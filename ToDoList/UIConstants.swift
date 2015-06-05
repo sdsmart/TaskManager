@@ -61,12 +61,3 @@ public struct UIConstants {
         }
     }
 }
-
-extension UIColor {
-    class func colorFromRGB(#r: Int, g: Int, b: Int) -> UIColor {
-        return UIColor(red: CGFloat(r) / CGFloat(255.0),
-        green: CGFloat(g) / CGFloat(255.0),
-        blue: CGFloat(b) / CGFloat(255.0),
-        alpha: 1.0)
-    }
-}

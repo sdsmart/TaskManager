@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE2FA1731B1EA7FB00FBBC3F /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FA1721B1EA7FB00FBBC3F /* GlobalFunctions.swift */; };
+		FE6CD2641B21495100B631A0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6CD2631B21495100B631A0 /* UIColorExtension.swift */; };
+		FE6CD2671B21499B00B631A0 /* NSDateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6CD2661B21499B00B631A0 /* NSDateFormatterExtension.swift */; };
 		FEAE73171B1D4072003A24E6 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */; };
 		FEAE73191B1D44D4003A24E6 /* DatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73181B1D44D4003A24E6 /* DatePickerDelegate.swift */; };
 		FEE3652A1B1A48160081361C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365291B1A48160081361C /* AppDelegate.swift */; };
@@ -41,7 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FE2FA1721B1EA7FB00FBBC3F /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 3.xcdatamodel"; sourceTree = "<group>"; };
+		FE6CD2631B21495100B631A0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FE6CD2661B21499B00B631A0 /* NSDateFormatterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatterExtension.swift; sourceTree = "<group>"; };
 		FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		FEAE73181B1D44D4003A24E6 /* DatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDelegate.swift; sourceTree = "<group>"; };
 		FEE365241B1A48150081361C /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE6CD2651B21497A00B631A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE6CD2631B21495100B631A0 /* UIColorExtension.swift */,
+				FE6CD2661B21499B00B631A0 /* NSDateFormatterExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		FEE3651B1B1A48150081361C = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +178,7 @@
 		FEE3655A1B1A49A50081361C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE6CD2651B21497A00B631A0 /* Extensions */,
 				FEE693501B1AAC6D0040A1DA /* Protocols */,
 				FEE365541B1A49A10081361C /* ToDoListTableViewController.swift */,
 				FEE365551B1A49A10081361C /* TaskEditorViewController.swift */,
@@ -183,7 +196,6 @@
 				FEE3655E1B1A49CB0081361C /* StoryboardConstants.swift */,
 				FEE3655F1B1A49CB0081361C /* UIConstants.swift */,
 				FEE693531B1AB4260040A1DA /* NSUserDefaultsConstants.swift */,
-				FE2FA1721B1EA7FB00FBBC3F /* GlobalFunctions.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -299,7 +311,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEE693521B1AAD0A0040A1DA /* OptionsDelegate.swift in Sources */,
+				FE6CD2641B21495100B631A0 /* UIColorExtension.swift in Sources */,
 				FEE3652A1B1A48160081361C /* AppDelegate.swift in Sources */,
+				FE6CD2671B21499B00B631A0 /* NSDateFormatterExtension.swift in Sources */,
 				FEEE5CC91B1BFF7B00D367C9 /* ColorSchemeProtocol.swift in Sources */,
 				FEE693541B1AB4260040A1DA /* NSUserDefaultsConstants.swift in Sources */,
 				FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */,
@@ -312,7 +326,6 @@
 				FEAE73191B1D44D4003A24E6 /* DatePickerDelegate.swift in Sources */,
 				FEAE73171B1D4072003A24E6 /* DatePickerViewController.swift in Sources */,
 				FEE365621B1A49CB0081361C /* UIConstants.swift in Sources */,
-				FE2FA1731B1EA7FB00FBBC3F /* GlobalFunctions.swift in Sources */,
 				FEE365591B1A49A10081361C /* TaskDetailsViewController.swift in Sources */,
 				FEE365581B1A49A10081361C /* TaskEditorViewController.swift in Sources */,
 			);
@@ -521,10 +534,11 @@
 		FEE3652B1B1A48160081361C /* ToDoList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */,
 				FEE6934D1B1A70F20040A1DA /* ToDoList 2.xcdatamodel */,
 				FEE3652C1B1A48160081361C /* ToDoList.xcdatamodel */,
 			);
-			currentVersion = FEE6934D1B1A70F20040A1DA /* ToDoList 2.xcdatamodel */;
+			currentVersion = FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */;
 			path = ToDoList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

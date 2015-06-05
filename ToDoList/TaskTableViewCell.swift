@@ -65,7 +65,7 @@ class TaskTableViewCell: UITableViewCell {
         if taskManaged != nil {
             titleLabel.text = taskManaged!.name
             
-            let fullDueDateText = getStringFromDate(taskManaged!.dueDate)
+            let fullDueDateText = NSDateFormatter.getStringFromDateWithoutYear(taskManaged!.dueDate)
             let splitDateTextOnSpace = split(fullDueDateText){$0 == " "}
             var displayDate = ""
             if fullDueDateText.lowercaseString.rangeOfString("today") != nil

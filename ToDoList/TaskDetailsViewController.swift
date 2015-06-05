@@ -76,8 +76,8 @@ class TaskDetailsViewController: UIViewController {
         if taskManaged != nil {
             updateImportanceTextColor()
             
-            let createdDate = getStringFromDate(taskManaged!.createdDate)
-            let dueDate = getStringFromDate(taskManaged!.dueDate)
+            let createdDate = NSDateFormatter.getStringFromDateWithoutYear(taskManaged!.createdDate)
+            let dueDate = NSDateFormatter.getStringFromDateWithoutYear(taskManaged!.dueDate)
             
             createdDateValueLabel.text = createdDate
             dueDateValueLabel.text = dueDate

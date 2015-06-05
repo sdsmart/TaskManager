@@ -55,12 +55,12 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         detailsTextView.delegate = self
         
         if dueDate != nil {
-            dueDateValueLabel.text = getStringFromDate(dueDate!)
+            dueDateValueLabel.text = NSDateFormatter.getStringFromDateWithoutYear(dueDate!)
         } else {
             let currentDate = NSDate()
             let currentDatePlusOneDay = currentDate.dateByAddingTimeInterval(86400)
             dueDate = currentDatePlusOneDay
-            dueDateValueLabel.text = getStringFromDate(currentDatePlusOneDay)
+            dueDateValueLabel.text = NSDateFormatter.getStringFromDateWithoutYear(currentDatePlusOneDay)
         }
         
         lowImportanceLabel.textColor = UIConstants.Colors.lowImportanceColor
@@ -175,7 +175,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     func didSelectDate(sender: DatePickerViewController, selectedDate: NSDate) {
         dueDate = selectedDate
         
-        let dueDateText = getStringFromDate(selectedDate)
+        let dueDateText = NSDateFormatter.getStringFromDateWithoutYear(selectedDate)
         dueDateValueLabel.text = dueDateText
     }
     
@@ -196,6 +196,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 taskManaged!.details = detailsTextView.text
                 taskManaged!.importance = importanceValueLabel.text!.toInt()!
                 
+                removeLocalNotificationForExistingTask(taskManaged!)
                 addLocalNotificationsForTask(taskManaged!)
             } else {
                 let task = NSEntityDescription.insertNewObjectForEntityForName(CoreDataConstants.taskEntityName, inManagedObjectContext: managedObjectContext) as! TaskManaged
@@ -203,8 +204,9 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 if dueDate != nil {
                     task.dueDate = dueDate!
                 }
-                task.createdDate = NSDate()
+                task.uuid = NSUUID().UUIDString
                 task.name = nameTextField.text
+                task.createdDate = NSDate()
                 task.details = detailsTextView.text
                 task.importance = importanceValueLabel.text!.toInt()!
                 
@@ -219,25 +221,33 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     
     private func addLocalNotificationsForTask(task: TaskManaged) {
         var overDueNotification = UILocalNotification()
-        overDueNotification.alertBody = "Task: '\(task.name)' Is Overdue!"
+        overDueNotification.alertBody = "Task: \"\(task.name)\" Is Overdue!"
         overDueNotification.alertAction = "open"
         overDueNotification.fireDate = task.dueDate
         overDueNotification.soundName = UILocalNotificationDefaultSoundName
+        overDueNotification.userInfo = ["uuid": task.uuid]
         UIApplication.sharedApplication().scheduleLocalNotification(overDueNotification)
         
-        var oneHourRemainingNotification = UILocalNotification()
-        oneHourRemainingNotification.alertBody = "Task: '\(task.name)' is due in one hour!"
-        oneHourRemainingNotification.alertAction = "open"
-        oneHourRemainingNotification.fireDate = task.dueDate.dateByAddingTimeInterval(-3600)
-        oneHourRemainingNotification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.sharedApplication().scheduleLocalNotification(oneHourRemainingNotification)
-        
         var oneDayRemainingNotification = UILocalNotification()
-        oneDayRemainingNotification.alertBody = "You have 24 hours to complete Task: '\(task.name)'"
+        oneDayRemainingNotification.alertBody = "Task: \"\(task.name)\" Is Due In 24 Hours."
         oneDayRemainingNotification.alertAction = "open"
         oneDayRemainingNotification.fireDate = task.dueDate.dateByAddingTimeInterval(-86400)
         oneDayRemainingNotification.soundName = UILocalNotificationDefaultSoundName
+        oneDayRemainingNotification.userInfo = ["uuid": task.uuid]
         UIApplication.sharedApplication().scheduleLocalNotification(oneDayRemainingNotification)
+    }
+    
+    private func removeLocalNotificationForExistingTask(task: TaskManaged) {
+        var app:UIApplication = UIApplication.sharedApplication()
+        for event in app.scheduledLocalNotifications {
+            var notification = event as! UILocalNotification
+            let userInfoCurrent = notification.userInfo as! Dictionary<String,String>
+            let uuid = userInfoCurrent["uuid"]
+            if uuid == task.uuid {
+                app.cancelLocalNotification(notification)
+                break;
+            }
+        }
     }
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -257,6 +267,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                     
                     destinationVC.delegate = self
                     destinationVC.colorScheme = colorScheme
+                    destinationVC.minimumDate = NSDate().dateByAddingTimeInterval(60)
                     if dueDate != nil {
                         destinationVC.initialDate = dueDate!
                     }

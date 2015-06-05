@@ -21,14 +21,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             
             implementColorScheme()
             
-            let numberOfSections = self.tableView.numberOfSections()
-            for i in 0..<numberOfSections {
-                let numberOfRows = self.tableView.numberOfRowsInSection(i)
-                for j in 0..<numberOfRows {
-                    let indexPath = NSIndexPath(forRow: j, inSection: i)
-                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TaskTableViewCell {
-                        cell.colorScheme = colorScheme
-                    }
+            let numberOfRows = self.tableView.numberOfRowsInSection(0)
+            for i in 0..<numberOfRows {
+                let indexPath = NSIndexPath(forRow: i, inSection: 0)
+                if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TaskTableViewCell {
+                    cell.colorScheme = colorScheme
                 }
             }
         }
@@ -66,6 +63,12 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialViewSetup()
+        implementColorScheme()
+        loadData()
+    }
+    
+    private func initialViewSetup() {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let sortMethod = defaults.stringForKey(NSUserDefaultsConstants.sortDescriptorKey) {
             sortDescriptorKey = sortMethod
@@ -73,9 +76,6 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         if let cs = defaults.stringForKey(NSUserDefaultsConstants.colorSchemeKey) {
             colorScheme = cs
         }
-        
-        implementColorScheme()
-        loadData()
     }
     
     private func implementColorScheme() {
@@ -112,6 +112,10 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         super.viewWillAppear(animated)
         
         self.tableView.reloadData()
+        
+        if self.tableView.numberOfRowsInSection(0) > CoreDataConstants.maxNumberOfTasksThatShouldBeStored {
+            self.navigationItem.rightBarButtonItem?.enabled = false
+        }
     }
 
     // MARK: UITableViewDataSource Methods
@@ -157,8 +161,12 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
+        return "Complete"
+    }
+    
     private func confirmDeleteTask(task: TaskManaged) {
-        let confirmDeleteActionSheet = UIActionSheet(title: "Are you certain you finished task '\(task.name)'?", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: "Complete")
+        let confirmDeleteActionSheet = UIActionSheet(title: "Are You Certain You Have Completed The Task:\n\(task.name)?", delegate: self, cancelButtonTitle: "Keep Task", destructiveButtonTitle: "Complete")
         confirmDeleteActionSheet.showInView(self.view)
     }
     
