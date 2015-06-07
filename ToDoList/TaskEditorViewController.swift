@@ -70,8 +70,6 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     private func implementColorScheme() {
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.view.backgroundColor = scheme.mainBackgroundColor
-            nameTextField.backgroundColor = scheme.secondaryBackgroundColor
-            detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
             importanceSlider.tintColor = UIColor.blackColor()
             
             nameLabel.textColor = scheme.labelColor

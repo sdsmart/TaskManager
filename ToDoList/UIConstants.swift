@@ -41,23 +41,23 @@ struct UIConstants {
             var secondaryBackgroundColor = UIColor.colorFromRGB(r: 255, g: 255, b: 255)
             var cellBackgroundColor = UIColor.colorFromRGB(r: 225, g: 225, b: 225)
             var buttonColor = UIColor.colorFromRGB(r: 0, g: 122, b: 255)
-            var labelColor = UIColor.colorFromRGB(r: 106, g: 27, b: 154)
+            var labelColor = UIColor.colorFromRGB(r: 55, g: 15, b: 100)
         }
         
         struct BlueColorScheme: ColorSchemeProtocol {
             var mainBackgroundColor = UIColor.colorFromRGB(r: 187, g: 222, b: 251)
             var secondaryBackgroundColor = UIColor.colorFromRGB(r: 225, g: 245, b: 254)
-            var cellBackgroundColor = UIColor.colorFromRGB(r: 180, g: 212, b: 245)
+            var cellBackgroundColor = UIColor.colorFromRGB(r: 170, g: 205, b: 240)
             var buttonColor = UIColor.colorFromRGB(r: 117, g: 5, b: 0)
-            var labelColor = UIColor.colorFromRGB(r: 54, g: 0, b: 107)
+            var labelColor = UIColor.colorFromRGB(r: 0, g: 0, b: 0)
         }
         
         struct YellowColorScheme: ColorSchemeProtocol {
-            var mainBackgroundColor = UIColor.colorFromRGB(r: 255, g: 238, b: 88)
+            var mainBackgroundColor = UIColor.colorFromRGB(r: 255, g: 245, b: 157)
             var secondaryBackgroundColor = UIColor.colorFromRGB(r: 255, g: 249, b: 196)
-            var cellBackgroundColor = UIColor.colorFromRGB(r: 255, g: 234, b: 0)
+            var cellBackgroundColor = UIColor.colorFromRGB(r: 255, g: 241, b: 118)
             var buttonColor = UIColor.colorFromRGB(r: 0, g: 100, b: 235)
-            var labelColor = UIColor.colorFromRGB(r: 13, g: 71, b: 161)
+            var labelColor = UIColor.colorFromRGB(r: 0, g: 0, b: 0)
         }
     }
 }

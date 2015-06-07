@@ -51,7 +51,6 @@ class TaskDetailsViewController: UIViewController {
     private func implementColorCheme() {
         func implementColorSchemeHelper(scheme: ColorSchemeProtocol) {
             self.view.backgroundColor = scheme.mainBackgroundColor
-            detailsTextView.backgroundColor = scheme.secondaryBackgroundColor
             
             importanceLabel.textColor = scheme.labelColor
             createdDateLabel.textColor = scheme.labelColor
