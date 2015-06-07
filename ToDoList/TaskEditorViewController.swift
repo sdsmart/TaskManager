@@ -194,7 +194,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 }
                 taskManaged!.name = nameTextField.text
                 taskManaged!.details = detailsTextView.text
-                taskManaged!.importance = importanceValueLabel.text!.toInt()!
+                taskManaged!.importance = Int32(importanceValueLabel.text!.toInt()!)
                 
                 removeLocalNotificationForExistingTask(taskManaged!)
                 addLocalNotificationsForTask(taskManaged!)
@@ -208,7 +208,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
                 task.name = nameTextField.text
                 task.createdDate = NSDate()
                 task.details = detailsTextView.text
-                task.importance = importanceValueLabel.text!.toInt()!
+                task.importance = Int32(importanceValueLabel.text!.toInt()!)
                 
                 addLocalNotificationsForTask(task)
             }

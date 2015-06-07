@@ -15,7 +15,7 @@ class TaskManaged: NSManagedObject {
     @NSManaged var uuid: String
     @NSManaged var name: String
     @NSManaged var details: String
-    @NSManaged var importance: Int
+    @NSManaged var importance: Int32
     @NSManaged var createdDate: NSDate
     @NSManaged var dueDate: NSDate
 }

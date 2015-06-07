@@ -83,6 +83,7 @@ class TaskDetailsViewController: UIViewController {
             dueDateValueLabel.text = dueDate
             importanceValueLabel.text = "\(taskManaged!.importance)"
             detailsTextView.text = taskManaged!.details
+            self.title = taskManaged!.name
         }
     }
     

@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE69D9A61B24FFC200D7BC83 /* ToDoList 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 4.xcdatamodel"; sourceTree = "<group>"; };
 		FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 3.xcdatamodel"; sourceTree = "<group>"; };
 		FE6CD2631B21495100B631A0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FE6CD2661B21499B00B631A0 /* NSDateFormatterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatterExtension.swift; sourceTree = "<group>"; };
@@ -259,6 +260,7 @@
 				TargetAttributes = {
 					FEE365231B1A48150081361C = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 3G36XWPDSW;
 					};
 					FEE3653B1B1A48160081361C = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -448,9 +450,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Steve Smart (E275H99Z2C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ToDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c1fafce2-317a-4905-9a87-1b145d70d04d";
 			};
 			name = Debug;
 		};
@@ -458,9 +464,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Steve Smart (E275H99Z2C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ToDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c1fafce2-317a-4905-9a87-1b145d70d04d";
 			};
 			name = Release;
 		};
@@ -534,11 +544,12 @@
 		FEE3652B1B1A48160081361C /* ToDoList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FE69D9A61B24FFC200D7BC83 /* ToDoList 4.xcdatamodel */,
 				FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */,
 				FEE6934D1B1A70F20040A1DA /* ToDoList 2.xcdatamodel */,
 				FEE3652C1B1A48160081361C /* ToDoList.xcdatamodel */,
 			);
-			currentVersion = FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */;
+			currentVersion = FE69D9A61B24FFC200D7BC83 /* ToDoList 4.xcdatamodel */;
 			path = ToDoList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

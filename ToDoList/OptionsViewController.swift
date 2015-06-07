@@ -37,7 +37,7 @@ class OptionsViewController: UIViewController {
     // MARK: View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         sortBySegmentedControl.selectedSegmentIndex = initialSortBySegmentedControlIndex
         colorSchemeSegmentedControl.selectedSegmentIndex = initialColorSchemeSegmentedControlIndex
         implementColorScheme()

@@ -166,7 +166,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     private func confirmDeleteTask(task: TaskManaged) {
-        let confirmDeleteActionSheet = UIActionSheet(title: "Are You Certain You Have Completed The Task:\n\(task.name)?", delegate: self, cancelButtonTitle: "Keep Task", destructiveButtonTitle: "Complete")
+        let confirmDeleteActionSheet = UIActionSheet(title: "Are you sure you have completed the task:\n\"\(task.name)\"?", delegate: self, cancelButtonTitle: "Keep Task", destructiveButtonTitle: "Complete")
         confirmDeleteActionSheet.showInView(self.view)
     }
     
