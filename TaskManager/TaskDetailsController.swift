@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TaskDetailsViewController: UIViewController {
+class TaskDetailsController: UIViewController {
 
     // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
@@ -107,7 +107,7 @@ class TaskDetailsViewController: UIViewController {
             switch identifier {
             case StoryboardConstants.SegueIdentifiers.editTaskSegue:
                 if let destinationVC = segue.destinationViewController as? UINavigationController {
-                    if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorViewController {
+                    if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorController {
                         taskEditorController.managedObjectContext = self.managedObjectContext
                         if taskManaged != nil {
                             taskEditorController.taskManaged = taskManaged!

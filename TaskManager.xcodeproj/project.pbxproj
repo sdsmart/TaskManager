@@ -9,23 +9,22 @@
 /* Begin PBXBuildFile section */
 		FE6CD2641B21495100B631A0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6CD2631B21495100B631A0 /* UIColorExtension.swift */; };
 		FE6CD2671B21499B00B631A0 /* NSDateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6CD2661B21499B00B631A0 /* NSDateFormatterExtension.swift */; };
-		FEAE73171B1D4072003A24E6 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */; };
+		FEAE73171B1D4072003A24E6 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73161B1D4072003A24E6 /* DatePickerController.swift */; };
 		FEAE73191B1D44D4003A24E6 /* DatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAE73181B1D44D4003A24E6 /* DatePickerDelegate.swift */; };
 		FEE3652A1B1A48160081361C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365291B1A48160081361C /* AppDelegate.swift */; };
-		FEE3652D1B1A48160081361C /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEE3652B1B1A48160081361C /* ToDoList.xcdatamodeld */; };
+		FEE3652D1B1A48160081361C /* TaskManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEE3652B1B1A48160081361C /* TaskManager.xcdatamodeld */; };
 		FEE365341B1A48160081361C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEE365331B1A48160081361C /* Images.xcassets */; };
 		FEE365371B1A48160081361C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE365351B1A48160081361C /* LaunchScreen.xib */; };
-		FEE365431B1A48160081361C /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365421B1A48160081361C /* ToDoListTests.swift */; };
 		FEE3654F1B1A49620081361C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEE3654E1B1A49620081361C /* Main.storyboard */; };
-		FEE365511B1A496E0081361C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365501B1A496E0081361C /* TaskTableViewCell.swift */; };
-		FEE365571B1A49A10081361C /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365541B1A49A10081361C /* ToDoListTableViewController.swift */; };
-		FEE365581B1A49A10081361C /* TaskEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365551B1A49A10081361C /* TaskEditorViewController.swift */; };
-		FEE365591B1A49A10081361C /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365561B1A49A10081361C /* TaskDetailsViewController.swift */; };
+		FEE365511B1A496E0081361C /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365501B1A496E0081361C /* TaskCell.swift */; };
+		FEE365571B1A49A10081361C /* ToDoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365541B1A49A10081361C /* ToDoListController.swift */; };
+		FEE365581B1A49A10081361C /* TaskEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365551B1A49A10081361C /* TaskEditorController.swift */; };
+		FEE365591B1A49A10081361C /* TaskDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE365561B1A49A10081361C /* TaskDetailsController.swift */; };
 		FEE3655C1B1A49C20081361C /* TaskManaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655B1B1A49C20081361C /* TaskManaged.swift */; };
 		FEE365601B1A49CB0081361C /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655D1B1A49CB0081361C /* CoreDataConstants.swift */; };
 		FEE365611B1A49CB0081361C /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655E1B1A49CB0081361C /* StoryboardConstants.swift */; };
 		FEE365621B1A49CB0081361C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE3655F1B1A49CB0081361C /* UIConstants.swift */; };
-		FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */; };
+		FEE6934F1B1A83F10040A1DA /* OptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE6934E1B1A83F10040A1DA /* OptionsController.swift */; };
 		FEE693521B1AAD0A0040A1DA /* OptionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */; };
 		FEE693541B1AB4260040A1DA /* NSUserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE693531B1AB4260040A1DA /* NSUserDefaultsConstants.swift */; };
 		FEEE5CC91B1BFF7B00D367C9 /* ColorSchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEE5CC81B1BFF7B00D367C9 /* ColorSchemeProtocol.swift */; };
@@ -46,28 +45,26 @@
 		FE6CD2611B2138EF00B631A0 /* ToDoList 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 3.xcdatamodel"; sourceTree = "<group>"; };
 		FE6CD2631B21495100B631A0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FE6CD2661B21499B00B631A0 /* NSDateFormatterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatterExtension.swift; sourceTree = "<group>"; };
-		FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		FEAE73161B1D4072003A24E6 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		FEAE73181B1D44D4003A24E6 /* DatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDelegate.swift; sourceTree = "<group>"; };
-		FEE365241B1A48150081361C /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEE365241B1A48150081361C /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE365281B1A48150081361C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEE365291B1A48160081361C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEE3652C1B1A48160081361C /* ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoList.xcdatamodel; sourceTree = "<group>"; };
 		FEE365331B1A48160081361C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FEE365361B1A48160081361C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		FEE3653C1B1A48160081361C /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FEE365411B1A48160081361C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FEE365421B1A48160081361C /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
+		FEE3653C1B1A48160081361C /* TaskManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE3654E1B1A49620081361C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		FEE365501B1A496E0081361C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		FEE365541B1A49A10081361C /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
-		FEE365551B1A49A10081361C /* TaskEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditorViewController.swift; sourceTree = "<group>"; };
-		FEE365561B1A49A10081361C /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		FEE365501B1A496E0081361C /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		FEE365541B1A49A10081361C /* ToDoListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListController.swift; sourceTree = "<group>"; };
+		FEE365551B1A49A10081361C /* TaskEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditorController.swift; sourceTree = "<group>"; };
+		FEE365561B1A49A10081361C /* TaskDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsController.swift; sourceTree = "<group>"; };
 		FEE3655B1B1A49C20081361C /* TaskManaged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManaged.swift; sourceTree = "<group>"; };
 		FEE3655D1B1A49CB0081361C /* CoreDataConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
 		FEE3655E1B1A49CB0081361C /* StoryboardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConstants.swift; sourceTree = "<group>"; };
 		FEE3655F1B1A49CB0081361C /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		FEE6934D1B1A70F20040A1DA /* ToDoList 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ToDoList 2.xcdatamodel"; sourceTree = "<group>"; };
-		FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		FEE6934E1B1A83F10040A1DA /* OptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsController.swift; sourceTree = "<group>"; };
 		FEE693511B1AAD0A0040A1DA /* OptionsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsDelegate.swift; sourceTree = "<group>"; };
 		FEE693531B1AB4260040A1DA /* NSUserDefaultsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsConstants.swift; sourceTree = "<group>"; };
 		FEEE5CC81B1BFF7B00D367C9 /* ColorSchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeProtocol.swift; sourceTree = "<group>"; };
@@ -103,8 +100,7 @@
 		FEE3651B1B1A48150081361C = {
 			isa = PBXGroup;
 			children = (
-				FEE365261B1A48150081361C /* ToDoList */,
-				FEE3653F1B1A48160081361C /* ToDoListTests */,
+				FEE365261B1A48150081361C /* TaskManager */,
 				FEE365251B1A48150081361C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,22 +108,22 @@
 		FEE365251B1A48150081361C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FEE365241B1A48150081361C /* ToDoList.app */,
-				FEE3653C1B1A48160081361C /* ToDoListTests.xctest */,
+				FEE365241B1A48150081361C /* TaskManager.app */,
+				FEE3653C1B1A48160081361C /* TaskManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FEE365261B1A48150081361C /* ToDoList */ = {
+		FEE365261B1A48150081361C /* TaskManager */ = {
 			isa = PBXGroup;
 			children = (
 				FEE365521B1A49720081361C /* Views */,
 				FEE3655A1B1A49A50081361C /* Controllers */,
-				FEE365531B1A49890081361C /* Persistence_Layer */,
+				FEE365531B1A49890081361C /* Persistence Layer */,
 				FEE365631B1A49CF0081361C /* Constants */,
 				FEE365271B1A48150081361C /* Supporting Files */,
 			);
-			path = ToDoList;
+			path = TaskManager;
 			sourceTree = "<group>";
 		};
 		FEE365271B1A48150081361C /* Supporting Files */ = {
@@ -141,39 +137,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FEE3653F1B1A48160081361C /* ToDoListTests */ = {
-			isa = PBXGroup;
-			children = (
-				FEE365421B1A48160081361C /* ToDoListTests.swift */,
-				FEE365401B1A48160081361C /* Supporting Files */,
-			);
-			path = ToDoListTests;
-			sourceTree = "<group>";
-		};
-		FEE365401B1A48160081361C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FEE365411B1A48160081361C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		FEE365521B1A49720081361C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FEE3654E1B1A49620081361C /* Main.storyboard */,
-				FEE365501B1A496E0081361C /* TaskTableViewCell.swift */,
+				FEE365501B1A496E0081361C /* TaskCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		FEE365531B1A49890081361C /* Persistence_Layer */ = {
+		FEE365531B1A49890081361C /* Persistence Layer */ = {
 			isa = PBXGroup;
 			children = (
 				FEE3655B1B1A49C20081361C /* TaskManaged.swift */,
-				FEE3652B1B1A48160081361C /* ToDoList.xcdatamodeld */,
+				FEE3652B1B1A48160081361C /* TaskManager.xcdatamodeld */,
 			);
-			name = Persistence_Layer;
+			name = "Persistence Layer";
 			sourceTree = "<group>";
 		};
 		FEE3655A1B1A49A50081361C /* Controllers */ = {
@@ -181,11 +160,11 @@
 			children = (
 				FE6CD2651B21497A00B631A0 /* Extensions */,
 				FEE693501B1AAC6D0040A1DA /* Protocols */,
-				FEE365541B1A49A10081361C /* ToDoListTableViewController.swift */,
-				FEE365551B1A49A10081361C /* TaskEditorViewController.swift */,
-				FEE365561B1A49A10081361C /* TaskDetailsViewController.swift */,
-				FEE6934E1B1A83F10040A1DA /* OptionsViewController.swift */,
-				FEAE73161B1D4072003A24E6 /* DatePickerViewController.swift */,
+				FEE365541B1A49A10081361C /* ToDoListController.swift */,
+				FEE365551B1A49A10081361C /* TaskEditorController.swift */,
+				FEE365561B1A49A10081361C /* TaskDetailsController.swift */,
+				FEE6934E1B1A83F10040A1DA /* OptionsController.swift */,
+				FEAE73161B1D4072003A24E6 /* DatePickerController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -214,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FEE365231B1A48150081361C /* ToDoList */ = {
+		FEE365231B1A48150081361C /* TaskManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FEE365461B1A48160081361C /* Build configuration list for PBXNativeTarget "ToDoList" */;
+			buildConfigurationList = FEE365461B1A48160081361C /* Build configuration list for PBXNativeTarget "TaskManager" */;
 			buildPhases = (
 				FEE365201B1A48150081361C /* Sources */,
 				FEE365211B1A48150081361C /* Frameworks */,
@@ -226,14 +205,14 @@
 			);
 			dependencies = (
 			);
-			name = ToDoList;
+			name = TaskManager;
 			productName = ToDoList;
-			productReference = FEE365241B1A48150081361C /* ToDoList.app */;
+			productReference = FEE365241B1A48150081361C /* TaskManager.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FEE3653B1B1A48160081361C /* ToDoListTests */ = {
+		FEE3653B1B1A48160081361C /* TaskManagerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FEE365491B1A48160081361C /* Build configuration list for PBXNativeTarget "ToDoListTests" */;
+			buildConfigurationList = FEE365491B1A48160081361C /* Build configuration list for PBXNativeTarget "TaskManagerTests" */;
 			buildPhases = (
 				FEE365381B1A48160081361C /* Sources */,
 				FEE365391B1A48160081361C /* Frameworks */,
@@ -244,9 +223,9 @@
 			dependencies = (
 				FEE3653E1B1A48160081361C /* PBXTargetDependency */,
 			);
-			name = ToDoListTests;
+			name = TaskManagerTests;
 			productName = ToDoListTests;
-			productReference = FEE3653C1B1A48160081361C /* ToDoListTests.xctest */;
+			productReference = FEE3653C1B1A48160081361C /* TaskManagerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -268,7 +247,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FEE3651F1B1A48150081361C /* Build configuration list for PBXProject "ToDoList" */;
+			buildConfigurationList = FEE3651F1B1A48150081361C /* Build configuration list for PBXProject "TaskManager" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -281,8 +260,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FEE365231B1A48150081361C /* ToDoList */,
-				FEE3653B1B1A48160081361C /* ToDoListTests */,
+				FEE365231B1A48150081361C /* TaskManager */,
+				FEE3653B1B1A48160081361C /* TaskManagerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -318,18 +297,18 @@
 				FE6CD2671B21499B00B631A0 /* NSDateFormatterExtension.swift in Sources */,
 				FEEE5CC91B1BFF7B00D367C9 /* ColorSchemeProtocol.swift in Sources */,
 				FEE693541B1AB4260040A1DA /* NSUserDefaultsConstants.swift in Sources */,
-				FEE6934F1B1A83F10040A1DA /* OptionsViewController.swift in Sources */,
+				FEE6934F1B1A83F10040A1DA /* OptionsController.swift in Sources */,
 				FEE3655C1B1A49C20081361C /* TaskManaged.swift in Sources */,
 				FEE365601B1A49CB0081361C /* CoreDataConstants.swift in Sources */,
 				FEE365611B1A49CB0081361C /* StoryboardConstants.swift in Sources */,
-				FEE3652D1B1A48160081361C /* ToDoList.xcdatamodeld in Sources */,
-				FEE365511B1A496E0081361C /* TaskTableViewCell.swift in Sources */,
-				FEE365571B1A49A10081361C /* ToDoListTableViewController.swift in Sources */,
+				FEE3652D1B1A48160081361C /* TaskManager.xcdatamodeld in Sources */,
+				FEE365511B1A496E0081361C /* TaskCell.swift in Sources */,
+				FEE365571B1A49A10081361C /* ToDoListController.swift in Sources */,
 				FEAE73191B1D44D4003A24E6 /* DatePickerDelegate.swift in Sources */,
-				FEAE73171B1D4072003A24E6 /* DatePickerViewController.swift in Sources */,
+				FEAE73171B1D4072003A24E6 /* DatePickerController.swift in Sources */,
 				FEE365621B1A49CB0081361C /* UIConstants.swift in Sources */,
-				FEE365591B1A49A10081361C /* TaskDetailsViewController.swift in Sources */,
-				FEE365581B1A49A10081361C /* TaskEditorViewController.swift in Sources */,
+				FEE365591B1A49A10081361C /* TaskDetailsController.swift in Sources */,
+				FEE365581B1A49A10081361C /* TaskEditorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +316,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEE365431B1A48160081361C /* ToDoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +324,7 @@
 /* Begin PBXTargetDependency section */
 		FEE3653E1B1A48160081361C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FEE365231B1A48150081361C /* ToDoList */;
+			target = FEE365231B1A48150081361C /* TaskManager */;
 			targetProxy = FEE3653D1B1A48160081361C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -452,11 +430,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Steve Smart (E275H99Z2C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = TaskManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1fafce2-317a-4905-9a87-1b145d70d04d";
+				PRODUCT_NAME = TaskManager;
+				PROVISIONING_PROFILE = "29fd73f0-a74c-438c-92db-fe34d0748b4b";
 			};
 			name = Debug;
 		};
@@ -466,11 +444,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Steve Smart (E275H99Z2C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = TaskManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1fafce2-317a-4905-9a87-1b145d70d04d";
+				PRODUCT_NAME = TaskManager;
+				PROVISIONING_PROFILE = "29fd73f0-a74c-438c-92db-fe34d0748b4b";
 			};
 			name = Release;
 		};
@@ -488,7 +466,7 @@
 				);
 				INFOPLIST_FILE = ToDoListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TaskManagerTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList.app/ToDoList";
 			};
 			name = Debug;
@@ -503,7 +481,7 @@
 				);
 				INFOPLIST_FILE = ToDoListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TaskManagerTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList.app/ToDoList";
 			};
 			name = Release;
@@ -511,7 +489,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FEE3651F1B1A48150081361C /* Build configuration list for PBXProject "ToDoList" */ = {
+		FEE3651F1B1A48150081361C /* Build configuration list for PBXProject "TaskManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEE365441B1A48160081361C /* Debug */,
@@ -520,7 +498,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FEE365461B1A48160081361C /* Build configuration list for PBXNativeTarget "ToDoList" */ = {
+		FEE365461B1A48160081361C /* Build configuration list for PBXNativeTarget "TaskManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEE365471B1A48160081361C /* Debug */,
@@ -529,7 +507,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FEE365491B1A48160081361C /* Build configuration list for PBXNativeTarget "ToDoListTests" */ = {
+		FEE365491B1A48160081361C /* Build configuration list for PBXNativeTarget "TaskManagerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEE3654A1B1A48160081361C /* Debug */,
@@ -541,7 +519,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FEE3652B1B1A48160081361C /* ToDoList.xcdatamodeld */ = {
+		FEE3652B1B1A48160081361C /* TaskManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				FE69D9A61B24FFC200D7BC83 /* ToDoList 4.xcdatamodel */,
@@ -550,7 +528,7 @@
 				FEE3652C1B1A48160081361C /* ToDoList.xcdatamodel */,
 			);
 			currentVersion = FE69D9A61B24FFC200D7BC83 /* ToDoList 4.xcdatamodel */;
-			path = ToDoList.xcdatamodeld;
+			path = TaskManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

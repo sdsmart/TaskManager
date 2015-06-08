@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Options View Controller-->
+        <!--Options Controller-->
         <scene sceneID="eGj-aq-hib">
             <objects>
-                <viewController id="YRG-VW-kGX" customClass="OptionsViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YRG-VW-kGX" customClass="OptionsController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JKI-cv-FbO"/>
                         <viewControllerLayoutGuide type="bottom" id="nZj-Xy-zT8"/>
@@ -97,13 +97,13 @@
         <!--To-Do List-->
         <scene sceneID="dcv-7j-Dnt">
             <objects>
-                <tableViewController id="Gds-Nm-1vt" customClass="ToDoListTableViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Gds-Nm-1vt" customClass="ToDoListController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="9a0-Rb-P28">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="I6j-aV-8Jf" customClass="TaskTableViewCell" customModule="ToDoList" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="I6j-aV-8Jf" customClass="TaskCell" customModule="TaskManager" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I6j-aV-8Jf" id="fR9-hX-MPu">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -255,7 +255,7 @@
         <!--Add Task-->
         <scene sceneID="Trg-aY-Jun">
             <objects>
-                <viewController id="YMz-nw-dbe" customClass="TaskEditorViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YMz-nw-dbe" customClass="TaskEditorController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XW7-dd-Uti"/>
                         <viewControllerLayoutGuide type="bottom" id="VZ1-OQ-OQ1"/>
@@ -663,10 +663,10 @@
             </objects>
             <point key="canvasLocation" x="2676" y="-95"/>
         </scene>
-        <!--Date Picker View Controller-->
+        <!--Date Picker Controller-->
         <scene sceneID="G4U-7V-o98">
             <objects>
-                <viewController id="emT-HR-7Uc" customClass="DatePickerViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="emT-HR-7Uc" customClass="DatePickerController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W7Y-DB-v1M"/>
                         <viewControllerLayoutGuide type="bottom" id="y69-xf-fzB"/>
@@ -713,7 +713,7 @@
         <!--Task Title-->
         <scene sceneID="UXU-nG-NPI">
             <objects>
-                <viewController id="D1s-H4-lPb" customClass="TaskDetailsViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D1s-H4-lPb" customClass="TaskDetailsController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="knw-57-Cgn"/>
                         <viewControllerLayoutGuide type="bottom" id="eZW-Hi-TC3"/>

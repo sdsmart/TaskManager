@@ -9,5 +9,5 @@
 import Foundation
 
 protocol DatePickerDelegate {
-    func didSelectDate(sender: DatePickerViewController, selectedDate: NSDate)
+    func didSelectDate(sender: DatePickerController, selectedDate: NSDate)
 }

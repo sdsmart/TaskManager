@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FEE365231B1A48150081361C"
-               BuildableName = "ToDoList.app"
-               BlueprintName = "ToDoList"
-               ReferencedContainer = "container:ToDoList.xcodeproj">
+               BuildableName = "TaskManager.app"
+               BlueprintName = "TaskManager"
+               ReferencedContainer = "container:TaskManager.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FEE3653B1B1A48160081361C"
+               BuildableName = "TaskManagerTests.xctest"
+               BlueprintName = "TaskManagerTests"
+               ReferencedContainer = "container:TaskManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,25 +40,35 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FEE3653B1B1A48160081361C"
+               BuildableName = "TaskManagerTests.xctest"
+               BlueprintName = "TaskManagerTests"
+               ReferencedContainer = "container:TaskManager.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FEE365231B1A48150081361C"
-            BuildableName = "ToDoList.app"
-            BlueprintName = "ToDoList"
-            ReferencedContainer = "container:ToDoList.xcodeproj">
+            BuildableName = "TaskManager.app"
+            BlueprintName = "TaskManager"
+            ReferencedContainer = "container:TaskManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
    <LaunchAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -53,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FEE365231B1A48150081361C"
-            BuildableName = "ToDoList.app"
-            BlueprintName = "ToDoList"
-            ReferencedContainer = "container:ToDoList.xcodeproj">
+            BuildableName = "TaskManager.app"
+            BlueprintName = "TaskManager"
+            ReferencedContainer = "container:TaskManager.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -65,24 +89,24 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FEE365231B1A48150081361C"
-            BuildableName = "ToDoList.app"
-            BlueprintName = "ToDoList"
-            ReferencedContainer = "container:ToDoList.xcodeproj">
+            BuildableName = "TaskManager.app"
+            BlueprintName = "TaskManager"
+            ReferencedContainer = "container:TaskManager.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

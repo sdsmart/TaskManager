@@ -9,6 +9,6 @@
 import Foundation
 
 protocol OptionsDelegate {
-    func didSetSortOrder(sender: OptionsViewController, selectedSortOrder: String)
-    func didSetColorScheme(sender: OptionsViewController, selectedColorScheme: String)
+    func didSetSortOrder(sender: OptionsController, selectedSortOrder: String)
+    func didSetColorScheme(sender: OptionsController, selectedColorScheme: String)
 }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverPresentationControllerDelegate, DatePickerDelegate {
+class TaskEditorController: UIViewController, UITextViewDelegate, UIPopoverPresentationControllerDelegate, DatePickerDelegate {
 
     // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
@@ -170,7 +170,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
     }
     
     // MARK: DatePickerDelegate Methods
-    func didSelectDate(sender: DatePickerViewController, selectedDate: NSDate) {
+    func didSelectDate(sender: DatePickerController, selectedDate: NSDate) {
         dueDate = selectedDate
         
         let dueDateText = NSDateFormatter.getStringFromDateWithoutYear(selectedDate)
@@ -258,7 +258,7 @@ class TaskEditorViewController: UIViewController, UITextViewDelegate, UIPopoverP
         if let identifier = segue.identifier {
             switch identifier {
             case StoryboardConstants.SegueIdentifiers.pickDateSegue:
-                if let destinationVC = segue.destinationViewController as? DatePickerViewController {
+                if let destinationVC = segue.destinationViewController as? DatePickerController {
                     if let popVC = destinationVC.popoverPresentationController {
                         popVC.delegate = self
                     }

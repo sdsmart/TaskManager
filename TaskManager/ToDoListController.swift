@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
+class ToDoListController: UITableViewController, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPopoverPresentationControllerDelegate, OptionsDelegate {
     
     // MARK: Properties
     var managedObjectContext: NSManagedObjectContext!
@@ -24,7 +24,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             let numberOfRows = self.tableView.numberOfRowsInSection(0)
             for i in 0..<numberOfRows {
                 let indexPath = NSIndexPath(forRow: i, inSection: 0)
-                if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TaskTableViewCell {
+                if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? TaskCell {
                     cell.colorScheme = colorScheme
                 }
             }
@@ -136,7 +136,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(StoryboardConstants.CellIdentifiers.prototypeCellID, forIndexPath: indexPath) as! TaskTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(StoryboardConstants.CellIdentifiers.prototypeCellID, forIndexPath: indexPath) as! TaskCell
         let task = fetchedResultsController.objectAtIndexPath(indexPath) as? TaskManaged
         
         cell.taskManaged = task
@@ -197,7 +197,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
         switch type {
         case .Delete:
             if let deleteIndexPath = indexPath {
-                let cell = tableView.cellForRowAtIndexPath(deleteIndexPath) as! TaskTableViewCell
+                let cell = tableView.cellForRowAtIndexPath(deleteIndexPath) as! TaskCell
                 cell.isDeleted = true
                 tableView.deleteRowsAtIndexPaths([deleteIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             }
@@ -207,7 +207,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
             }
         case .Update:
             if let updateIndexPath = newIndexPath {
-                let cell = tableView.cellForRowAtIndexPath(updateIndexPath) as! TaskTableViewCell
+                let cell = tableView.cellForRowAtIndexPath(updateIndexPath) as! TaskCell
                 let task = fetchedResultsController.objectAtIndexPath(updateIndexPath) as? TaskManaged
                 
                 cell.taskManaged = task
@@ -234,11 +234,11 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     // MARK: OptionsDelegate Methods
-    func didSetSortOrder(sender: OptionsViewController, selectedSortOrder: String) {
+    func didSetSortOrder(sender: OptionsController, selectedSortOrder: String) {
         sortDescriptorKey = selectedSortOrder
     }
     
-    func didSetColorScheme(sender: OptionsViewController, selectedColorScheme: String) {
+    func didSetColorScheme(sender: OptionsController, selectedColorScheme: String) {
         colorScheme = selectedColorScheme
     }
 
@@ -260,7 +260,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     
     private func prepareForAddTaskSegue(sender: AnyObject?, addSegue: UIStoryboardSegue) {
         if let destinationVC = addSegue.destinationViewController as? UINavigationController {
-            if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorViewController {
+            if let taskEditorController = destinationVC.viewControllers[0] as? TaskEditorController {
                 taskEditorController.managedObjectContext = self.managedObjectContext
                 taskEditorController.title = UIConstants.Appearance.taskEditorTitleForAdd
                 taskEditorController.colorScheme = colorScheme
@@ -269,7 +269,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     private func prepareForDetailsSegue(sender: AnyObject?, detailsSegue: UIStoryboardSegue) {
-        if let destinationVC = detailsSegue.destinationViewController as? TaskDetailsViewController {
+        if let destinationVC = detailsSegue.destinationViewController as? TaskDetailsController {
             if let selectedIndex = self.tableView.indexPathForSelectedRow() {
                 if let task = self.fetchedResultsController.objectAtIndexPath(selectedIndex) as? TaskManaged {
                     destinationVC.managedObjectContext = self.managedObjectContext
@@ -284,7 +284,7 @@ class ToDoListTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     private func prepareForOptionsSegue(sender: AnyObject?, optionsSegue: UIStoryboardSegue) {
-        if let destinationVC = optionsSegue.destinationViewController as? OptionsViewController {
+        if let destinationVC = optionsSegue.destinationViewController as? OptionsController {
             if let popVC = destinationVC.popoverPresentationController {
                 popVC.delegate = self
             }

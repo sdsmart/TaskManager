@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsViewController: UIViewController {
+class OptionsController: UIViewController {
     
     // MARK: Properties
     var delegate: OptionsDelegate?

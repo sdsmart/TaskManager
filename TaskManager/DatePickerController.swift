@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatePickerViewController: UIViewController {
+class DatePickerController: UIViewController {
 
     // MARK: Properties
     var delegate: DatePickerDelegate?
