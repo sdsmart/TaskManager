@@ -182,6 +182,17 @@ class ToDoListController: UITableViewController, NSFetchedResultsControllerDeleg
     
     private func deleteTask() {
         if let task = taskNeedingToBeDeleted {
+            var app:UIApplication = UIApplication.sharedApplication()
+            for event in app.scheduledLocalNotifications {
+                var notification = event as! UILocalNotification
+                let userInfoCurrent = notification.userInfo as! Dictionary<String,String>
+                let uuid = userInfoCurrent["uuid"]
+                if uuid == task.uuid {
+                    app.cancelLocalNotification(notification)
+                    break;
+                }
+            }
+            
             managedObjectContext.deleteObject(task)
             managedObjectContext.save(nil)
             taskNeedingToBeDeleted = nil
