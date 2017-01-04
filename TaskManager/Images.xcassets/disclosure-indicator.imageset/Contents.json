@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "disclosure_indicator.png"
+      "filename" : "disclosure-indicator.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "disclosure-indicator-1.png"
     },
     {
       "idiom" : "universal",

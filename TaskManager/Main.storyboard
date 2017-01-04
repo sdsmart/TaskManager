@@ -150,7 +150,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="gnk-c7-FMt">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-indicator" translatesAutoresizingMaskIntoConstraints="NO" id="gnk-c7-FMt">
                                             <rect key="frame" x="562" y="15" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="J6N-2m-0Cu"/>
@@ -867,9 +867,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="disclosure_indicator" width="128" height="128"/>
+        <image name="disclosure-indicator" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jgf-8Q-FYo"/>
+        <segue reference="7K0-TT-hbF"/>
     </inferredMetricsTieBreakers>
 </document>

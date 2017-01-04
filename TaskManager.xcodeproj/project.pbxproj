@@ -121,6 +121,8 @@
 				FEE3655A1B1A49A50081361C /* Controllers */,
 				FEE365531B1A49890081361C /* Persistence Layer */,
 				FEE365631B1A49CF0081361C /* Constants */,
+				FEE693501B1AAC6D0040A1DA /* Protocols */,
+				FE6CD2651B21497A00B631A0 /* Extensions */,
 				FEE365271B1A48150081361C /* Supporting Files */,
 			);
 			path = TaskManager;
@@ -158,8 +160,6 @@
 		FEE3655A1B1A49A50081361C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FE6CD2651B21497A00B631A0 /* Extensions */,
-				FEE693501B1AAC6D0040A1DA /* Protocols */,
 				FEE365541B1A49A10081361C /* ToDoListController.swift */,
 				FEE365551B1A49A10081361C /* TaskEditorController.swift */,
 				FEE365561B1A49A10081361C /* TaskDetailsController.swift */,
