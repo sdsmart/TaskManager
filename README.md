@@ -1,5 +1,5 @@
-TaskManager -- Robust TODO list.
---------------------------------
+TaskManager -- A robust to-do list mobile application
+-----------------------------------------------------
 This project is complete, however it is out-dated due to iOS updates and will likely not run.
 
 I developed this for educational purposes when I began learning Swift.
